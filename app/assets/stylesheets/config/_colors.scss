@@ -1,10 +1,16 @@
 // Define variables for your color scheme
 
-// For example:
-$red: #FD1015;
-$blue: #0D6EFD;
-$yellow: #FFC65A;
-$orange: #E67E22;
-$green: #1EDD88;
-$gray: #0E0000;
-$light-gray: #F4F4F4;
+// Foodbreaker colors
+$food-blue: #94D4ED;
+$food-pink: #FA3C53;
+$food-off-white: #FCF5E9;
+$food-orange:#F1CC77;
+
+// For example, from code origin:
+ $red: #FD1015;
+ $blue: $food-blue;
+ $yellow: $food-orange;
+ $orange: $food-orange;
+ $green: #1EDD88;
+ $gray: #0E0000;
+ $light-gray: #F4F4F4;
