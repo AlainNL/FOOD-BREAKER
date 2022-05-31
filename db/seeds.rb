@@ -30,9 +30,9 @@
 
 # puts "User seed start..."
 
-# pierre = User.new(email: 'pierre@gmail.com', password: '12345678', first_name: "pierre", last_name: "jean", address: "17 boulevard clemenceau 35000 Rennes", avatar: '', bio: "On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et empêche de se concentrer sur la mise en page elle-même.")
-# pierre.photo.attach(io: URI.open("https://source.unsplash.com/random?man"), filename: "pierre.png", content_type: "image/png")
-# pierre.save!
+pierre = User.new(email: 'pierre@gmail.com', password: '12345678', first_name: "pierre", last_name: "jean", address: "17 boulevard clemenceau 35000 Rennes", avatar: '', bio: "On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et empêche de se concentrer sur la mise en page elle-même.")
+pierre.photo.attach(io: URI.open("https://source.unsplash.com/random?man"), filename: "pierre.png", content_type: "image/png")
+pierre.save!
 
 # sarah = User.new(email: 'sarah@gmail.com', password: '12345678', first_name: "sarah", last_name: "du desert", address: "35 rue kleber 33200 Bordeaux", avatar: '', bio: "On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et empêche de se concentrer sur la mise en page elle-même.")
 # sarah.photo.attach(io: URI.open("https://source.unsplash.com/random?woman"), filename: "sarahh.png", content_type: "image/png")
