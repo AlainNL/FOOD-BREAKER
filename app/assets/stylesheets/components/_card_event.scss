@@ -12,14 +12,18 @@
 
 .card-event h2 {
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 600;
+  letter-spacing: -0.02em;
   margin: 0;
+  color: $food-blue;
 }
 
 .card-event p {
   font-size: 12px;
+  font-weight: 600;
   opacity: .7;
   margin: 0;
+  color: $food-blue;
 }
 
 
@@ -27,12 +31,12 @@
   padding: 16px;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
   position: relative;
 }
 
-.card-event-infos .card-event-user {
-  right: 16px;
-  top: -20px;
-  width: 40px;
-}
+// .card-event-infos .card-event-user {
+//   right: 16px;
+//   top: -20px;
+//   width: 40px;
+// }
