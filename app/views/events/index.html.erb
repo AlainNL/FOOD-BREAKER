@@ -5,20 +5,22 @@
 
         <div class="input-group my-4">
           <div class ="input-primary mb-2">
+            <i class="fa-solid fa-location-dot pin-form"></i>
             <%= form_tag events_path, method: :get, class: "d-flex" do %>
             <%= text_field_tag :address,
               params[:query],
               class: "form-input",
-              placeholder: "put your address"
+              placeholder: '&nbsp'.html_safe
             %>
             <% end %>
           </div>
           <div class="input-primary mb-2">
+            <i class="fa-solid fa-comment pin-form-2"></i>
             <%= form_tag events_path, method: :get, class: "d-flex" do %>
             <%= text_field_tag :language,
               params[:query],
               class: "form-input",
-              placeholder: "choose your language"
+              placeholder: '&nbsp'.html_safe
             %>
             <% end %>
           </div>
@@ -32,11 +34,11 @@
             <%= f.input :date,
                         as: :string,
                         input_html: {
-                          class: "form-input",
+                          class: "form-date",
                           data: {
                             flatpickr_target: 'date',
                           }
-                        } %>
+                        }, label: '&nbsp'.html_safe, required: false %>
             <% end %>
         </div>
       </div>
