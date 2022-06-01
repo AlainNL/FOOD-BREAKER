@@ -74,7 +74,7 @@ sarahEvent = Event.new(title: "Learn Portuguese Food", category: "Cooking Class"
 sarahEvent.photos.attach(io: URI.open("https://source.unsplash.com/random"), filename: "sarahEvent.png", content_type: "image/png")
 sarahEvent.save!
 
-nicolasEvent = Event.new(title: "Traditional Dim Sum Cooking Class", category: "Cooking Class", address: "Tour eiffel", description: "Learn how to make Dim with friends", date: "13/08/2022", language: "French", capacity: 6, user: nicolas)
+nicolasEvent = Event.new(title: "Dim Sum Cooking Class", category: "Cooking Class", address: "Tour eiffel", description: "Learn how to make Dim with friends", date: "13/08/2022", language: "French", capacity: 6, user: nicolas)
 nicolasEvent.photos.attach(io: URI.open("https://source.unsplash.com/random"), filename: "nicolasEvent.png", content_type: "image/png")
 nicolasEvent.save!
 

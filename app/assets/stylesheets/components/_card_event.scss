@@ -11,7 +11,7 @@
 }
 
 .card-event h2 {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: -0.02em;
   margin: 0;
@@ -21,14 +21,13 @@
 .card-event p {
   font-size: 12px;
   font-weight: 600;
-  opacity: .7;
   margin: 0;
   color: $food-blue;
 }
 
 
 .card-event .card-event-infos {
-  padding: 16px;
+  padding: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -40,3 +39,39 @@
 //   top: -20px;
 //   width: 40px;
 // }
+
+.card-event-infos__avatar {
+  position: relative;
+  margin-right: 12px;
+  .flag {
+    position: absolute;
+    bottom: -5px;
+    right: -5px;
+  }
+}
+
+.card-event-infos__title {
+  flex: 1;
+
+}
+
+.card-event-infos__participants {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  > div {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    padding-right: 20px;
+  }
+  img {
+    margin-right: -0.7rem;
+  }
+}
+
+#events_show {
+  .card-event {
+    box-shadow: none;
+  }
+}
