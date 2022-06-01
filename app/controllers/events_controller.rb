@@ -13,4 +13,8 @@ class EventsController < ApplicationController
     @event = Event.new
     @booking = Booking.new
   end
+
+  def show
+    @events = Event.find(params[:id])
+  end
 end
