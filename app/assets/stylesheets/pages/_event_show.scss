@@ -2,3 +2,10 @@
   font-size: 0.85rem;
   margin: 10px 16px 0;
 }
+
+.btn-participate {
+  > div {
+  display: flex;
+  right: 5%;
+  }
+}
