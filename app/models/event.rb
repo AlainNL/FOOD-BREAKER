@@ -1,5 +1,7 @@
 class Event < ApplicationRecord
   belongs_to :user
+  has_many :bookings
+  has_many :participants, through: :bookings, source: :user
 
   validates :title, :category, :address, :description, :date, :language, :capacity, presence: true
   validates :category, inclusion: { in: ["Dinner", "Cooking Class", "Food Tour", "Brunch"] }

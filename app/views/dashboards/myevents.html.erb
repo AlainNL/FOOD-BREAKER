@@ -1,0 +1,37 @@
+<% @myevents.each do |e| %>
+  <div class="card-event">
+    <% if e.photos.attached? %>
+      <%= cl_image_tag e.photos.first.key%>
+    <% else %>
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg"/>
+    <% end %>
+      <div class="card-event-infos">
+        <div class="flagged-avatar-container">
+          <% if e.user.photo.attached? %>
+            <%= cl_image_tag e.user.photo.key, class: "avatar"%>
+          <% else %>
+            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="avatar"/>
+          <% end %>
+          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="flag" style="margin-right:auto"/>
+        </div>
+        <div style= "flex: 1">
+          <h2><%= e.title.capitalize %></h2>
+          <h2 style="font-size: 14px"><%= e.date.strftime('%m %b %Y') %></h2>
+        </div>
+        <div style="display: flex; align-items: center; flex-shrink: 0;">
+          <div style="display: flex; flex-direction: row-reverse; justify-content: flex-end; padding-right: 20px;">
+            <% e.bookings.where(confirmation: true).each do|b| %>
+              <% if b.user.photo.attached? %>
+                <%= cl_image_tag b.user.photo.key, class: "card-event-user avatar", style: "margin-right: -0.7rem"%>
+              <% else %>
+                  <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-event-user avatar" style="margin-right: -0.7rem"/>
+                <% end %>
+            <%end%>
+          </div>
+
+          <p><%= e.bookings.where(confirmation: true).sum(&:nb_guest) %>/<%= e.capacity %></p>
+        </div>
+  </div>
+</div>
+    </div>
+<% end %>
