@@ -2,9 +2,9 @@ class EventsController < ApplicationController
   def index
     if params[:query].present?
       sql_query = <<~SQL
-      events.address ILIKE :query
-      OR events.language ILIKE :query
-      OR events.date ILIKE :query
+        events.address ILIKE :query
+        OR events.language ILIKE :query
+        OR events.date ILIKE :query
       SQL
       @events = Event.joins(:users).where(sql_query, query: "%#{params[:query]}%")
     else
@@ -13,6 +13,12 @@ class EventsController < ApplicationController
   end
 
   def show
-    @events = Event.find(params[:id])
+    @event = Event.find(params[:id])
+    @markers = [
+      {
+        lat: @event.latitude,
+        lng: @event.longitude
+      }
+    ]
   end
 end
