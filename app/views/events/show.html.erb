@@ -1,23 +1,26 @@
-<h1>my show is here</h1>
 <div class="card-event">
   <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg"/>
   <div class="card-event-infos">
-      <div class="flagged-avatar-container">
-        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="avatar"/>
-        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="flag" style="margin-right:auto"/>
+    <div class="card-event-infos__avatar">
+      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="avatar"/>
+      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="flag" style="margin-right:auto"/>
+    </div>
+    <div class="card-event-infos__title">
+      <h2><%=@events.title%></h2>
+      <p>22 Septembre 2022</p>
+    </div>
+    <div class="card-event-infos__participants">
+      <div>
+        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-event-user avatar"/>
+        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-event-user avatar"/>
+        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-event-user avatar"/>
+        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-event-user avatar"/>
       </div>
-      <div style= "flex: 1">
-        <h2>Event Title</h2>
-        <h2 style="font-size: 14px">22 Septembre 2022</h2>
-      </div>
-    <div style="display: flex; align-items: center; flex-shrink: 0;">
-      <div style="display: flex; flex-direction: row-reverse; justify-content: flex-end; padding-right: 20px;">
-        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-event-user avatar" style="margin-right: -0.7rem"/>
-        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-event-user avatar" style="margin-right: -0.7rem"/>
-        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-event-user avatar" style="margin-right: -0.7rem"/>
-        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-event-user avatar" style="margin-right: -0.7rem"/>
-      </div>
-       <p>4/5</p>
-     </div>
+      <p>4/5</p>
+    </div>
   </div>
+</div>
+
+<div class="event-description">
+    <p><%=@events.description%></p>
 </div>
