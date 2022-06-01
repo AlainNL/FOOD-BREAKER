@@ -1,3 +1,14 @@
-<%= simple_form_for(@event) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+<%= simple_form_for [@event],
+            html: {
+              data: {
+                controller: 'flatpickr'
+              }
+            } do |f| %>
+<%= f.input :date,
+          as: :string,
+          input_html: {
+            data: {
+              flatpickr_target: 'Date',
+            }
+          } %>
+<% end %>

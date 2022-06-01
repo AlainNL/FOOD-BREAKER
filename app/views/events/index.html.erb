@@ -2,22 +2,44 @@
   <div class="row justify-content-center">
     <div class="col-sm-8">
       <div id="events">
+
+        <div class="input-group my-4">
+          <div class ="input-primary mb-2">
+            <%= form_tag events_path, method: :get, class: "d-flex" do %>
+            <%= text_field_tag :address,
+              params[:query],
+              class: "form-input",
+              placeholder: "put your address"
+            %>
+            <% end %>
+          </div>
+          <div class="input-primary mb-2">
+            <%= form_tag events_path, method: :get, class: "d-flex" do %>
+            <%= text_field_tag :language,
+              params[:query],
+              class: "form-input",
+              placeholder: "choose your language"
+            %>
+            <% end %>
+          </div>
+          <div class="input-primary mb-2">
+            <%= simple_form_for [@event],
+                          html: {
+                            data: {
+                              controller: 'flatpickr'
+                            }
+                          } do |f| %>
+            <%= f.input :date,
+                        as: :string,
+                        input_html: {
+                          class: "form-input",
+                          data: {
+                            flatpickr_target: 'date',
+                          }
+                        } %>
+            <% end %>
+        </div>
       </div>
-      <%= form_tag events_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :address,
-        params[:query],
-        class: "form-control",
-        placeholder: "put your address"
-      %>
-      <% end %>
-      <%= form_tag events_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :language,
-        params[:query],
-        class: "form-control",
-        placeholder: "choose your language"
-      %>
-      <%= submit_tag "Search", class: "btn btn-primary" %>
-      <% end %>
     </div>
   </div>
 </div>

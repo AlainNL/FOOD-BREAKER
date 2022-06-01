@@ -10,5 +10,7 @@ class EventsController < ApplicationController
     else
       @events = Event.all
     end
+    @event = Event.new
+    @booking = Booking.new
   end
 end
