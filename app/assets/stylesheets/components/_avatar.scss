@@ -8,8 +8,19 @@
 }
 
 .flag {
-  width: 56px;
-  height: 20px;
+  height: 17px;
+  width: 28px;
+  position: absolute;
+  top: 63%;
+  left: 40%;
+  object-fit: cover;
+}
+
+.flagged-avatar-container {
+  flex-shrink: 0;
+  width: 60px;
+  margin-right: 10px;
+  position: relative;
 }
 // .avatar-bordered {
 //   width: 40px;
