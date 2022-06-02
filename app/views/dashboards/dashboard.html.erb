@@ -1,9 +1,11 @@
+
+
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item" role="presentation">
     <button class="nav-link active" id="future-tab" data-bs-toggle="tab" data-bs-target="#future" type="button" role="tab" aria-controls="future" aria-selected="true">Coming events</button>
   </li>
   <li class="nav-item" role="presentation">
-    <button class="nav-link" id="past-tab" data-bs-toggle="tab" data-bs-target="#past" type="button" role="tab" aria-controls="past" aria-selected="false">Last events</button>
+    <button class="nav-link" id="past-tab" data-bs-toggle="tab" data-bs-target="#past" type="button" role="tab" aria-controls="past" aria-selected="false">Past events</button>
   </li>
 </ul>
 
@@ -28,7 +30,43 @@
           </div>
           <div class="card-event-infos__title">
             <h2><%= e.title.capitalize %></h2>
-            <p><%= e.date.strftime('%m/%d/%Y') %></p>
+            <p><%= e.date.strftime('%d/%m/%Y') %></p>
+          </div>
+          <div style="card-event-infos__participants">
+            <div>
+              <% e.bookings.where(confirmation: true).each do|b| %>
+                <% if b.user.photo.attached? %>
+                  <%= cl_image_tag b.user.photo.key, class: "card-event-user avatar"%>
+                <% else %>
+                  <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-event-user avatar"/>
+                <% end %>
+              <%end%>
+            </div>
+            <p><%= e.bookings.where(confirmation: true).sum(&:nb_guest) %>/<%= e.capacity %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <%  %>
+    <% @my_futur_bookings.each do |e| %>
+      <div class="card-event">
+        <% if e.photos.attached? %>
+          <%= cl_image_tag e.photos.first.key%>
+        <% else %>
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg"/>
+        <% end %>
+        <div class="card-event-infos">
+          <div class="card-event-infos__avatar">
+            <% if e.user.photo.attached? %>
+              <%= cl_image_tag e.user.photo.key, class: "avatar"%>
+            <% else %>
+              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="avatar"/>
+            <% end %>
+            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="flag" style="margin-right:auto"/>
+          </div>
+          <div class="card-event-infos__title">
+            <h2><%= e.title.capitalize %></h2>
+            <p><%= e.date.strftime('%d/%m/%Y') %></p>
           </div>
           <div style="card-event-infos__participants">
             <div>
@@ -67,6 +105,42 @@
           <div class="card-event-infos__title">
             <h2><%= e.title.capitalize %></h2>
             <p><%= e.date.strftime('%m/%d/%Y') %></p>
+          </div>
+          <div style="card-event-infos__participants">
+            <div>
+              <% e.bookings.where(confirmation: true).each do|b| %>
+                <% if b.user.photo.attached? %>
+                  <%= cl_image_tag b.user.photo.key, class: "card-event-user avatar"%>
+                <% else %>
+                  <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-event-user avatar"/>
+                <% end %>
+              <%end%>
+            </div>
+            <p><%= e.bookings.where(confirmation: true).sum(&:nb_guest) %>/<%= e.capacity %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <% %>
+    <% @my_past_bookings.each do |e| %>
+      <div class="card-event">
+        <% if e.photos.attached? %>
+          <%= cl_image_tag e.photos.first.key%>
+        <% else %>
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg"/>
+        <% end %>
+        <div class="card-event-infos">
+          <div class="card-event-infos__avatar">
+            <% if e.user.photo.attached? %>
+              <%= cl_image_tag e.user.photo.key, class: "avatar"%>
+            <% else %>
+              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="avatar"/>
+            <% end %>
+            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="flag" style="margin-right:auto"/>
+          </div>
+          <div class="card-event-infos__title">
+            <h2><%= e.title.capitalize %></h2>
+            <p><%= e.date.strftime('%d/%m/%Y') %></p>
           </div>
           <div style="card-event-infos__participants">
             <div>
