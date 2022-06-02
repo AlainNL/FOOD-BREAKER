@@ -7,6 +7,16 @@
   flex-grow: 0;
 }
 
-.navbar-lewagon img {
-  width: 40px;
+.navbar-lewagon-icon {
+  color:#FA3C53;
+  font-size: 24px;
+}
+
+.navbar-lewagon-logo {
+  width: 50px;
+}
+
+
+.navbar .container-fluid {
+  padding: 10%;
 }
