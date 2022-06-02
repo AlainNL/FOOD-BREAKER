@@ -36,7 +36,7 @@ sleep(1)
 
 puts "User seed start..."
 
-pierre = User.new(email: 'pierre@gmail.com', password: '12345678', first_name: "pierre", last_name: "jean", avatar: '', address: "17 boulevard clemenceau 35000 Rennes", bio: "Take a gourmet break with a brunch of Brittany ! We can have a chat before over food as French cheese, French charcuterie, bread, pancakes and cider!! I will be delighted to welcome you in my restored farmhouse from the 18th century with an old bread oven and a lovely garden.")
+pierre = User.new(email: 'pierre@gmail.com', password: '12345678', first_name: "pierre", last_name: "jean", avatar: '', address: "17 boulevard clemenceau 35000 Rennes", bio: "Living in Britanny, I will be delighted to welcome you in my restored farmhouse from the 18th century with a lovely garden.")
 pierre.photo.attach(io: URI.open("https://source.unsplash.com/random?man"), filename: "pierre.png", content_type: "image/png")
 pierre.save!
 
@@ -66,7 +66,7 @@ pierreEvent = Event.new(title: "frendly Parisian Dinner", category: "Dinner", ad
 pierreEvent.photos.attach(io: URI.open("https://source.unsplash.com/random?food"), filename: "pierreEvent.png", content_type: "image/png")
 pierreEvent.save!
 
-pierreEvent2 = Event.new(title: "Brunch on the beach", category: "Brunch", address: "plage du solidor 35400 Saint-Malo", description: "Brunch with a view on the beach", date: "15/06/2022", language: "English", capacity: 8, user: pierre)
+pierreEvent2 = Event.new(title: "Brunch on the beach", category: "Brunch", address: "plage du solidor 35400 Saint-Malo", description: "Take a gourmet break with a brunch of Brittany ! We can have a chat before over food as French cheese, French charcuterie, bread, pancakes and cider!!", date: "15/06/2022", language: "English", capacity: 8, user: pierre)
 pierreEvent2.photos.attach(io: URI.open("https://source.unsplash.com/random?food"), filename: "pierreEvent2.png", content_type: "image/png")
 pierreEvent2.save!
 
