@@ -7,6 +7,8 @@ class EventsController < ApplicationController
         OR events.date ILIKE :query
       SQL
       @events = Event.joins(:users).where(sql_query, query: "%#{params[:query]}%")
+      # je ne pense pas qu'il y ait besoin  de faire une jointure sur la table user. on cherche juste les events
+      raise
     else
       @events = Event.all
     end
