@@ -14,17 +14,15 @@
             %>
             <% end %>
           </div>
-          <div class="input-primary mb-2">
+          <div class="input-secondary mb-2">
             <i class="fa-solid fa-comment pin-form-2"></i>
-            <%= form_tag events_path, method: :get, class: "d-flex" do %>
+            <%= form_tag events_path, method: :get do %>
             <%= text_field_tag :language,
               params[:query],
-              class: "form-input",
+              class: "form-secondary",
               placeholder: '&nbsp'.html_safe
             %>
             <% end %>
-          </div>
-          <div class="input-primary mb-2">
             <%= simple_form_for [@event],
                           html: {
                             data: {
@@ -39,6 +37,33 @@
                             flatpickr_target: 'date',
                           }
                         }, label: '&nbsp'.html_safe, required: false %>
+            <% end %>
+            </div>
+            </div>
+
+            <% @events.each do |e| %>
+            <div class="card-event">
+                <% if e.photos.attached? %>
+                <%= cl_image_tag e.photos.first.key, height: 100, width: 200, crop: :fill %>
+                <% else %>
+                <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg"/>
+                <% end %>
+              <div class="card-event-infos">
+                <div class="card-event-infos__avatar">
+                  <% if e.user.photo.attached? %>
+                    <%= cl_image_tag e.user.photo.key, class: "avatar"%>
+                  <% else %>
+                    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="avatar"/>
+                  <% end %>
+                    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="flag" style="margin-right:auto"/>
+                </div>
+
+                <div class="card-event-infos__title">
+                  <h2><%= e.title.capitalize %></h2>
+                  <p><%= e.date.strftime('%m/%d/%Y') %></p>
+                </div>
+              </div>
+            </div>
             <% end %>
         </div>
       </div>
