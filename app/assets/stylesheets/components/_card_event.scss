@@ -27,12 +27,12 @@
 
 
 .card-event .card-event-infos {
-  padding: 20px;
+  padding: 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
-  top: -40px;
+  top: -42px;
 }
 
 // .card-event-infos .card-event-user {
@@ -55,7 +55,13 @@
   padding: 20px;
   width: 100%;
   position: absolute;
-  top: 260px;
+  top: 265px;
+  .pin-form {
+    font-size: 30px;
+    position: relative;
+    top: -30px;
+    right: -80%;
+  }
 }
 
 .card-event-infos__participants {
