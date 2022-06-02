@@ -1,15 +1,11 @@
 class DashboardsController < ApplicationController
   # skip_after_action :verify_authorized, only: %i[myevents mybookings]
 
-  def myevents
-    # AS AN HOST
+  def dashboard
     @user = current_user
     @myevents = @user.events
+    @mybookings = @user.bookings.map {|booking| booking.event}
+    @my_futur_bookings = @mybookings.select {|event| event.date >= Time.now}
+    @my_past_bookings = @mybookings.select {|event| event.date < Time.now}
   end
-
-  #def mybookings
-    # AS A GUEST
-  #  @user = current_user
-  #  @mybookings = @user.bookings
-  # end
 end

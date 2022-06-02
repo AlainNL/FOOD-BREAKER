@@ -11,7 +11,7 @@
 }
 
 .card-event h2 {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   letter-spacing: -0.02em;
   margin: 0;
@@ -27,11 +27,12 @@
 
 
 .card-event .card-event-infos {
-  padding: 20px;
+  padding: 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
+  top: -42px;
 }
 
 // .card-event-infos .card-event-user {
@@ -51,13 +52,21 @@
 }
 
 .card-event-infos__title {
-  flex: 1;
-
+  padding: 20px;
+  width: 100%;
+  position: absolute;
+  top: 265px;
+  .pin-form {
+    font-size: 30px;
+    position: relative;
+    top: -30px;
+    right: -80%;
+  }
 }
 
 .card-event-infos__participants {
   display: flex;
-  align-items: center;
+  align-items: end;
   flex-shrink: 0;
   > div {
     display: flex;
@@ -66,7 +75,7 @@
     padding-right: 20px;
   }
   img {
-    margin-right: -0.7rem;
+    margin-right: -0.9rem;
   }
 }
 

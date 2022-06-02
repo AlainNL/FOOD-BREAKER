@@ -92,7 +92,7 @@ Booking.create(nb_guest: "4", confirmation: true, user_id: sarah.id, event_id: p
 Booking.create(nb_guest: "3", confirmation: true, user_id: nicolas.id, event_id: pierreEvent.id )
 Booking.create(nb_guest: "1", confirmation: true, user_id: louis.id, event_id: pierreEvent2.id )
 Booking.create(nb_guest: "2", confirmation: true, user_id: juliette.id, event_id: sarahEvent.id )
-Booking.create(nb_guest: "6", confirmation: true, user_id: juliette.id, event_id: sarahEvent.id )
+Booking.create(nb_guest: "6", confirmation: true, user_id: juliette.id, event_id: pierreEvent3.id )
 Booking.create(nb_guest: "3", confirmation: false, user_id: nicolas.id, event_id: nicolasEvent.id )
 
 puts "Booking seed finish..."
