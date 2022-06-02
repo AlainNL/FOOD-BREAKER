@@ -9,19 +9,22 @@
     <i class="fa-solid fa-question navbar-lewagon-icon"></i>
 
 
-      <%= link_to root_path do %>
-        <%= image_tag "Miroodles.png", class: "navbar-lewagon-logo"%>
-      <% end %>
+    <%= link_to events_path do %>
+      <%= image_tag "Miroodles.png", class: "navbar-lewagon-logo"%>
+    <% end %>
 
     <i class="fa-solid fa-calendar-days navbar-lewagon-icon"></i>
 
-    <%= cl_image_tag current_user.photo.key, class: "avatar", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+    <%= link_to edit_user_registration_path do %>
+      <%= cl_image_tag current_user.photo.key, class: "avatar"%>
+    <% end %>
 
-    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+    <%# <%= cl_image_tag current_user.photo.key, class: "avatar", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+
+    <%# <div class="dropdown-menu" aria-labelledby="navbarDropdown">
       <%= link_to "Action", "#", class: "dropdown-item" %>
-      <%= link_to "Another action", "#", class: "dropdown-item" %>
-      <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-    </div>
+      <%#= link_to "Another action", "#", class: "dropdown-item" %>
+      <%# <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
