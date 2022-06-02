@@ -6,6 +6,5 @@ Rails.application.routes.draw do
   end
   resources :bookings, only: [:destroy]
   resources :networks, except: [:new, :index]
-  get "/dashboard/myevents", to: "dashboards#myevents", as: :dashboard
-  get "/dashboard/mybookings", to: "dashboards#mybookings"
+  get "/dashboard", to: "dashboards#dashboard", as: :dashboard
 end
