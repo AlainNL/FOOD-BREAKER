@@ -44,22 +44,22 @@
 
             </div>
 
-            <% @events.each do |e| %>
-            <div class="card-event">
-                <% if e.photos.attached? %>
-                <%= cl_image_tag e.photos.first.key, height: 100, width: 200, crop: :fill %>
-                <% else %>
-                <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg"/>
-                <% end %>
-              <div class="card-event-infos">
-                <div class="card-event-infos__avatar">
-                  <% if e.user.photo.attached? %>
-                    <%= cl_image_tag e.user.photo.key, class: "avatar"%>
+            <% @events.each do |event| %>
+              <%= link_to event_path(event), class:'card-event' do %>
+                  <% if event.photos.attached? %>
+                    <%= cl_image_tag event.photos.first.key, height: 100, width: 200, crop: :fill %>
                   <% else %>
-                    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="avatar"/>
+                    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg"/>
                   <% end %>
-                    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="flag" style="margin-right:auto"/>
-                </div>
+                <div class="card-event-infos">
+                  <div class="card-event-infos__avatar">
+                    <% if event.user.photo.attached? %>
+                      <%= cl_image_tag event.user.photo.key, class: "avatar"%>
+                    <% else %>
+                      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="avatar"/>
+                    <% end %>
+                      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="flag" style="margin-right:auto"/>
+                  </div>
 
                 <div class="card-event-infos__title">
                   <h2><%= e.title.capitalize %></h2>
