@@ -5,7 +5,7 @@ class EventsController < ApplicationController
         events.address ILIKE :query
       SQL
       @events = Event.where(sql_query, query: "%#{params[:address]}%")
-      # jointure pour chercher 1 participant
+      # jointure sur User pour chercher 1 participant
    elsif params[:language].present?
       sql_query = <<~SQL
         events.language ILIKE :query
@@ -15,6 +15,7 @@ class EventsController < ApplicationController
       sql_query = <<~SQL
         events.date ILIKE :query
       SQL
+      # A changer pour prendre toutes les dates à partir de la date saisie
       @events = Event.where(sql_query, query: "%#{params[:date]}%")
     else
       @events = Event.all

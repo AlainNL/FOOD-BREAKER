@@ -82,6 +82,10 @@ nicolasEvent = Event.new(title: "Dim Sum Cooking Class", category: "Cooking Clas
 nicolasEvent.photos.attach(io: URI.open("https://source.unsplash.com/random?food"), filename: "nicolasEvent.png", content_type: "image/png")
 nicolasEvent.save!
 
+nicolasEvent2 = Event.new(title: "Pizza Cooking Class", category: "Cooking Class", address: "66, rue de l'arbre sec 75001 Paris", description: "Learn how to make delicious pizza", date: "27/09/2022", language: "English", capacity: 4, user: nicolas)
+nicolasEvent.photos.attach(io: URI.open("https://source.unsplash.com/random?food"), filename: "nicolasEvent.png", content_type: "image/png")
+nicolasEvent2.save!
+
 puts "Event seed finish !"
 
 sleep(1)
@@ -93,7 +97,7 @@ Booking.create(nb_guest: "3", confirmation: true, user_id: nicolas.id, event_id:
 Booking.create(nb_guest: "1", confirmation: true, user_id: louis.id, event_id: pierreEvent2.id )
 Booking.create(nb_guest: "2", confirmation: true, user_id: juliette.id, event_id: sarahEvent.id )
 Booking.create(nb_guest: "6", confirmation: true, user_id: juliette.id, event_id: pierreEvent3.id )
-Booking.create(nb_guest: "3", confirmation: false, user_id: nicolas.id, event_id: nicolasEvent.id )
+Booking.create(nb_guest: "3", confirmation: true, user_id: pierre.id, event_id: nicolasEvent2.id )
 
 puts "Booking seed finish..."
 
