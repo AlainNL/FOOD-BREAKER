@@ -40,7 +40,7 @@
     <p><%=@event.description%></p>
 </div>
 
-<%= link_to  event_bookings_path(@event), class:'btn-participate' do %>
+<%= link_to event_bookings_path(@event, booking: {nb_guest: "4", user_id: current_user, event_id: @event.id}),data:{ turbo_method: :post}, class:'btn-participate' do %>
   <div class="btn-primary">PARTICIPATE +</div>
 <% end %>
 
