@@ -16,7 +16,12 @@
 
   <body id="<%= controller_name %>_<%= action_name %>">
     <%= render "shared/flashes" %>
+    <div class="container">
     <%= yield %>
-    <%= render "shared/navbar" %>
+    </div>
+    <% if params[:action] != "home" %>
+      <%= render "shared/navbar" %>
+    <% end %>
+
   </body>
 </html>
