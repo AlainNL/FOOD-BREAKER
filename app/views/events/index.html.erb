@@ -58,7 +58,7 @@
                 <% else %>
                   <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="avatar"/>
                 <% end %>
-                  <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="flag" style="margin-right:auto"/>
+                  <img src=<%= Event::FLAGS[event.language.to_sym] %> class="flag" style="margin-right:auto"/>
               </div>
               <div class="card-event-infos__title">
                 <h2><%= event.title.capitalize %></h2>

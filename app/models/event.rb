@@ -1,4 +1,10 @@
 class Event < ApplicationRecord
+  FLAGS = {
+    French: "https://cdn-icons-png.flaticon.com/512/197/197560.png",
+    English: "https://cdn-icons-png.flaticon.com/512/197/197560.png",
+    Spanish: "https://cdn-icons-png.flaticon.com/512/197/197560.png",
+    Portuguese: "https://cdn-icons-png.flaticon.com/512/197/197560.png"
+  }
   belongs_to :user
   has_many :bookings
   has_many :participants, through: :bookings, source: :user
