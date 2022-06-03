@@ -14,6 +14,7 @@
               %>
             <% end %>
           </div>
+
           <div class="input-secondary mb-2">
             <i class="fa-solid fa-comment pin-form-2"></i>
             <%= form_tag events_path, method: :get do %>
@@ -23,6 +24,7 @@
               placeholder: '&nbsp'.html_safe
             %>
             <% end %>
+
             <%= simple_form_for [@event],
                           html: {
                             data: {
@@ -39,6 +41,7 @@
                         }, label: '&nbsp'.html_safe, required: false %>
             <% end %>
             </div>
+
             </div>
 
             <% @events.each do |e| %>
@@ -60,7 +63,7 @@
 
                 <div class="card-event-infos__title">
                   <h2><%= e.title.capitalize %></h2>
-                  <p><%= e.date.strftime('%m/%d/%Y') %></p>
+                  <p><%= e.date.strftime('%d/%m/%Y') %></p>
                 </div>
               </div>
             </div>

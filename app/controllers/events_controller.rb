@@ -1,19 +1,27 @@
 class EventsController < ApplicationController
   def index
-    if params[:query].present?
+    if params[:address].present?
       sql_query = <<~SQL
         events.address ILIKE :query
-        OR events.language ILIKE :query
-        OR events.date ILIKE :query
       SQL
-      @events = Event.joins(:users).where(sql_query, query: "%#{params[:query]}%")
-      # je ne pense pas qu'il y ait besoin  de faire une jointure sur la table user. on cherche juste les events
-      raise
+      @events = Event.where(sql_query, query: "%#{params[:address]}%")
+      # jointure pour chercher 1 participant
+   elsif params[:language].present?
+      sql_query = <<~SQL
+        events.language ILIKE :query
+      SQL
+      @events = Event.where(sql_query, query: "%#{params[:language]}%")
+    elsif params[:date].present?
+      sql_query = <<~SQL
+        events.date ILIKE :query
+      SQL
+      @events = Event.where(sql_query, query: "%#{params[:date]}%")
     else
       @events = Event.all
     end
     @event = Event.new
     @booking = Booking.new
+    #raise
   end
 
   def show
