@@ -62,7 +62,7 @@ sleep(1)
 
 puts "Event seed start..."
 
-pierreEvent = Event.new(title: "frendly Parisian Dinner", category: "Dinner", address: "17 boulevard clemenceau 35000 Rennes", description: "Dinner with friends around French cheeses and wines", date: "12/06/2022", language: "French", capacity: 10, user: pierre)
+pierreEvent = Event.new(title: "frendly Dinner", category: "Dinner", address: "17 boulevard clemenceau 35000 Rennes", description: "Dinner with friends around French cheeses and wines", date: "12/06/2022", language: "French", capacity: 10, user: pierre)
 pierreEvent.photos.attach(io: URI.open("https://source.unsplash.com/random?food"), filename: "pierreEvent.png", content_type: "image/png")
 pierreEvent.save!
 
@@ -70,7 +70,7 @@ pierreEvent2 = Event.new(title: "Brunch on the beach", category: "Brunch", addre
 pierreEvent2.photos.attach(io: URI.open("https://source.unsplash.com/random?food"), filename: "pierreEvent2.png", content_type: "image/png")
 pierreEvent2.save!
 
-pierreEvent3 = Event.new(title: "French pastries tour", category: "Food Tour", address: "17 boulevard Clemenceau", description: "Tour to taste a sample of French pastries produced locally.", date: "19/04/2022", language: "French", capacity: 3, user: pierre)
+pierreEvent3 = Event.new(title: "French pastries tour", category: "Food Tour", address: "17 boulevard Clemenceau 35000 Rennes", description: "Tour to taste a sample of French pastries produced locally.", date: "19/04/2022", language: "French", capacity: 3, user: pierre)
 pierreEvent3.photos.attach(io: URI.open("https://source.unsplash.com/random?food"), filename: "pierreEvent2.png", content_type: "image/png")
 pierreEvent3.save!
 
@@ -81,6 +81,10 @@ sarahEvent.save!
 nicolasEvent = Event.new(title: "Dim Sum Cooking Class", category: "Cooking Class", address: "Tour eiffel", description: "Learn how to make Dim with friends", date: "13/08/2022", language: "French", capacity: 6, user: nicolas)
 nicolasEvent.photos.attach(io: URI.open("https://source.unsplash.com/random?food"), filename: "nicolasEvent.png", content_type: "image/png")
 nicolasEvent.save!
+
+nicolasEvent2 = Event.new(title: "Pizza Cooking Class", category: "Cooking Class", address: "66, rue de l'arbre sec 75001 Paris", description: "Learn how to make delicious pizza", date: "27/09/2022", language: "English", capacity: 4, user: nicolas)
+nicolasEvent.photos.attach(io: URI.open("https://source.unsplash.com/random?food"), filename: "nicolasEvent.png", content_type: "image/png")
+nicolasEvent2.save!
 
 puts "Event seed finish !"
 
@@ -93,7 +97,7 @@ Booking.create(nb_guest: "3", confirmation: true, user_id: nicolas.id, event_id:
 Booking.create(nb_guest: "1", confirmation: true, user_id: louis.id, event_id: pierreEvent2.id )
 Booking.create(nb_guest: "2", confirmation: true, user_id: juliette.id, event_id: sarahEvent.id )
 Booking.create(nb_guest: "6", confirmation: true, user_id: juliette.id, event_id: pierreEvent3.id )
-Booking.create(nb_guest: "3", confirmation: false, user_id: nicolas.id, event_id: nicolasEvent.id )
+Booking.create(nb_guest: "3", confirmation: true, user_id: pierre.id, event_id: nicolasEvent2.id )
 
 puts "Booking seed finish..."
 

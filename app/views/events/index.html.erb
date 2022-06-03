@@ -14,6 +14,7 @@
               %>
             <% end %>
           </div>
+
           <div class="input-secondary mb-2">
             <i class="fa-solid fa-comment pin-form-2"></i>
             <%= form_tag events_path, method: :get do %>
@@ -23,6 +24,7 @@
               placeholder: '&nbsp'.html_safe
             %>
             <% end %>
+
             <%= simple_form_for [@event],
                           html: {
                             data: {
@@ -38,34 +40,33 @@
                           }
                         }, label: '&nbsp'.html_safe, required: false %>
             <% end %>
-            </div>
-            </div>
+          </div>
 
-            <% @events.each do |event| %>
-              <%= link_to event_path(event), class:'card-event' do %>
-                  <% if event.photos.attached? %>
-                    <%= cl_image_tag event.photos.first.key, height: 100, width: 200, crop: :fill %>
-                  <% else %>
-                    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg"/>
-                  <% end %>
-                <div class="card-event-infos">
-                  <div class="card-event-infos__avatar">
-                    <% if event.user.photo.attached? %>
-                      <%= cl_image_tag event.user.photo.key, class: "avatar"%>
-                    <% else %>
-                      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="avatar"/>
-                    <% end %>
-                      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="flag" style="margin-right:auto"/>
-                  </div>
-
-                  <div class="card-event-infos__title">
-                    <h2><%= event.title.capitalize %></h2>
-                    <p><%= event.date.strftime('%m/%d/%Y') %></p>
-                  </div>
-                  </div>
-                <% end %>
-            <% end %>
         </div>
+
+        <% @events.each do |event| %>
+          <%= link_to event_path(event), class:'card-event' do %>
+            <% if event.photos.attached? %>
+              <%= cl_image_tag event.photos.first.key, height: 100, width: 200, crop: :fill %>
+            <% else %>
+              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg"/>
+            <% end %>
+            <div class="card-event-infos">
+              <div class="card-event-infos__avatar">
+                <% if event.user.photo.attached? %>
+                  <%= cl_image_tag event.user.photo.key, class: "avatar"%>
+                <% else %>
+                  <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="avatar"/>
+                <% end %>
+                  <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="flag" style="margin-right:auto"/>
+              </div>
+              <div class="card-event-infos__title">
+                <h2><%= event.title.capitalize %></h2>
+                <p><%= event.date.strftime('%d/%m/%Y') %></p>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>
