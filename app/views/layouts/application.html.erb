@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%#<link rel="icon" href="././assets/images/Favicon.ico">%>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
 
@@ -16,7 +16,12 @@
 
   <body id="<%= controller_name %>_<%= action_name %>">
     <%= render "shared/flashes" %>
+    <div class="container">
     <%= yield %>
-    <%= render "shared/navbar" %>
+    </div>
+    <% if params[:action] != "home" %>
+      <%= render "shared/navbar" %>
+    <% end %>
+
   </body>
 </html>

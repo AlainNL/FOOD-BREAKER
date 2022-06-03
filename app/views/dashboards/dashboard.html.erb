@@ -1,4 +1,21 @@
-
+<div class="card mb-3">
+  <div class="row p-3">
+    <div class="col-2">
+      <% if @user.photo.attached? %>
+        <%= cl_image_tag @user.photo.key, class: "avatar-large" %>
+      <% else %>
+        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="avatar"/>
+      <% end %>
+    </div>
+    <div class="col-8 flex-fill">
+      <div class="card-body">
+        <h5 class="card-title"><%= @user.first_name.capitalize%> <%= @user.last_name.capitalize%></h5>
+        <p class="card-text"><small><%= @user.bio %><small></p>
+        <p class="card-text"><small class="text-muted">Avrg rating de ses events si host?</small></p>
+      </div>
+    </div>
+  </div>
+</div>
 
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item" role="presentation">
