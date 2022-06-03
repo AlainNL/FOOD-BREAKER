@@ -7,11 +7,11 @@
           <div class ="input-primary mb-2">
             <i class="fa-solid fa-location-dot pin-form"></i>
             <%= form_tag events_path, method: :get, class: "d-flex" do %>
-            <%= text_field_tag :address,
-              params[:query],
-              class: "form-input",
-              placeholder: '&nbsp'.html_safe
-            %>
+              <%= text_field_tag :address,
+                params[:query],
+                class: "form-input",
+                placeholder: '&nbsp'.html_safe
+              %>
             <% end %>
           </div>
           <div class="input-secondary mb-2">
