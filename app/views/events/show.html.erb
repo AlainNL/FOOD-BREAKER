@@ -41,10 +41,10 @@
 </div>
 
 <%= link_to event_bookings_path(@event, booking: {nb_guest: "4", user_id: current_user, event_id: @event.id}),data:{ turbo_method: :post}, class:'btn-participate' do %>
-  <div class="btn-primary">PARTICIPATE +</div>
+  <div class="btn-primary text-center">PARTICIPATE +</div>
 <% end %>
 
-<div style="width: 100%; height: 300px; margin-top: 75px"
+<div style="width: 100%; height: 300px; margin-top: 60px"
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
