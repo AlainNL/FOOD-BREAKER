@@ -87,7 +87,7 @@ nicolasEvent.photos.attach(io: URI.open("https://source.unsplash.com/random?food
 nicolasEvent.save!
 
 nicolasEvent2 = Event.new(title: "Pizza Cooking Class", category: "Cooking Class", address: "66, rue de l'arbre sec 75001 Paris", description: "Learn how to make delicious pizza", date: "27/09/2022", language: "English", capacity: 4, user: nicolas)
-nicolasEvent.photos.attach(io: URI.open("https://source.unsplash.com/random?food"), filename: "nicolasEvent.png", content_type: "image/png")
+nicolasEvent2.photos.attach(io: URI.open("https://source.unsplash.com/random?food"), filename: "nicolasEvent.png", content_type: "image/png")
 nicolasEvent2.save!
 
 puts "Event seed finish !"
