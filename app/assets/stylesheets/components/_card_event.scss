@@ -2,6 +2,7 @@
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  height: 300px;
 }
 
 .card-event > img {
@@ -51,33 +52,26 @@
   }
 }
 
-.card-event-infos__title {
-  padding: 20px;
-  width: 100%;
-  position: absolute;
-  top: 265px;
-  .pin-form {
-    font-size: 30px;
-    position: relative;
-    top: -30px;
-    right: -80%;
-  }
-}
+ .card-event-infos__title {
+   position: absolute;
+   right: 110px;
+   top: 48px;
+ }
 
-.card-event-infos__participants {
-  display: flex;
-  align-items: end;
-  flex-shrink: 0;
-  > div {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: flex-end;
-    padding-right: 20px;
-  }
-  img {
-    margin-right: -0.9rem;
-  }
-}
+// .card-event-infos__participants {
+//   display: flex;
+//   align-items: end;
+//   flex-shrink: 0;
+//   > div {
+//     display: flex;
+//     flex-direction: row-reverse;
+//     justify-content: flex-end;
+//     padding-right: 20px;
+//   }
+//   img {
+//     margin-right: -0.9rem;
+//   }
+// }
 
 #events_show {
   .card-event {

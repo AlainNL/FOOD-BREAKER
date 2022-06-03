@@ -1,6 +1,8 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
+  position: sticky;
+  bottom: 0;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -18,5 +20,6 @@
 
 
 .navbar .container-fluid {
-  padding: 10%;
+  display: flex;
+  justify-content: space-evenly;
 }
