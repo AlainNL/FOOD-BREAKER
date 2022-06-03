@@ -7,8 +7,7 @@ class EventsController < ApplicationController
         OR events.date ILIKE :query
       SQL
       @events = Event.joins(:users).where(sql_query, query: "%#{params[:query]}%")
-      # je ne pense pas qu'il y ait besoin  de faire une jointure sur la table user. on cherche juste les events
-      raise
+      # 1) je ne pense pas qu'il y ait besoin  de faire une jointure sur la table user. on cherche juste les events. 2) J'ai ajouté query en strong params 3) Est-ce qu'on peut avoir une seule zone query ou il faut faire query 1, query 2, query 3, est ce qu'on peut ajouter facilement l'autocomplete 4)il manque un bouton submit ou une icone submit sur la view
     else
       @events = Event.all
     end
@@ -29,6 +28,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :category, :address, :description, :date, :language, :capacity, :rating, :photos, :user_id)
+    params.require(:event).permit(:title, :category, :address, :description, :date, :language, :capacity, :rating, :photos, :user_id, :query)
   end
 end
