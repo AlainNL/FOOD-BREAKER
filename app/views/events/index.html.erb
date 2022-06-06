@@ -1,70 +1,85 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-sm-8">
-      <div id="events">
 
-        <div class="input-group my-5" style="padding: 0px 16px 0px 16px">
-          <p class="text-sm-start">FoodBreaker, join the network and break the ice otherwise !</p>
-            <%= form_tag events_path, method: :get, class: "d-flex justify-content-between" do %>
-              <%= text_field_tag :address,
-                params[:query],
-                class: "form-input",
-                placeholder: '&nbsp'.html_safe
-              %>
-            <%= text_field_tag :language,
-              params[:query],
-              class: "form-secondary",
-              placeholder: '&nbsp'.html_safe
-            %>
-            <% end %>
-            <%= simple_form_for [@event],
-                          html: {
-                            data: {
-                              controller: 'flatpickr'
-                            }
-                          } do |f| %>
-            <%= f.input :date,
-                        as: :string,
-                        input_html: {
-                          class: "form-date",
-                          data: {
-                            flatpickr_target: 'date',
-                          }
-                        }, label: '&nbsp'.html_safe, required: false %>
-            <% end %>
+<div class="justify-content-center">
+  <div id="events">
+    <div class="input-group mt-5" style="padding: 0px 16px 0px 16px">
+      <p class="text-sm-start"><strong>FoodBreaker, join the first food network for expatriates !</strong></p>
+        <%= simple_form_for :filters, url: events_path, html: { class: "w-100 filter-form", data: { controller: 'flatpickr' }}, method: :get do |f| %>
+          <%= f.input :address, placeholder: 'Where are you?', label: false, input_html: { value: params.dig(:filters, :address) } %>
+          <%= f.input :language, collection: Event::FLAGS.map(&:reverse), label: false, selected: params.dig(:filters, :language) || "French" %>
+          <%= f.input :date,
+            as: :string,
+            label: false,
+            input_html: {
+              value: params.dig(:filters, :date),
+              class: "form-date mt-2",
+              data: {
+                flatpickr_target: 'date',
+              }
+            }, required: false %>
+          <%= f.input :categories, as: :check_boxes, collection: ["Dinner", "Cooking Class", "Food Tour", "Brunch"], label: false, include_hidden: false, checked: params.dig(:filters, :categories) %>
+          <%= f.submit "filter", class: "w-100" %>
+        <% end %>
 
-        </div>
+        <%#= form_tag events_path, method: :get, class: "search-items" do %>
+          <%#= text_field_tag :address,
+            params[:query],
+            class: "form-input",
+            placeholder: 'Where are you?'
+          %>
+          <%#= text_field_tag :language,
+            params[:query],
+            class: "form-secondary",
+            placeholder: '&nbsp'.html_safe
+          %>
+        <%# end %>
+        <%#= simple_form_for [@event],
+          html: {
+            class: "w-100",
+            data: {
+              controller: 'flatpickr'
+            }
+          } do |f| %>
+        <%#= f.input :date,
+          as: :string,
+          label: false,
+          input_html: {
+            class: "form-date mt-2",
+            data: {
+              flatpickr_target: 'date',
+            }
+          }, required: false %>
+        <%# end %>
 
-        <%# CONTAINER FILTER CATEGORIES %>
-        <div class="categories-filter">
-          <button type="button" class="btn btn-filter">Dinner</button>
-          <button type="button" class="btn btn-filter">Cooking Class</button>
-          <button type="button" class="btn btn-filter">Food Tour</button>
-          <button type="button" class="btn btn-filter">Brunch</button>
-        </div>
+    </div>
 
-        <div class="card-event-little-all">
-          <% @events.each do |event| %>
-            <%= link_to event_path(event), class:'card-event-little mb-4' do %>
-              <% if event.photos.attached? %>
-                <%= cl_image_tag event.photos.first.key, height: 100, width: 200, crop: :fill %>
-              <% else %>
-                <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg"/>
-              <% end %>
-              <div class="card-event-little-infos">
-                  <h6><%= event.title.capitalize %></h6>
-                  <%= Event::FLAGS[event.language.to_sym] %>
-              </div>
-                  <p><%= event.date.strftime('%d %b %Y') %></p>
-                  <% if event.bookings.where(confirmation: true).sum(&:nb_guest) == 0 %>
-                    <p style="color: red">Fully Booked!</p>
-                  <% else %>
-                    <p style="color: #F93C52">👉 <%= pluralize(event.bookings.where(confirmation: true).sum(&:nb_guest),'place')%></p>
-                  <% end %>
-            <% end %>
+    <%# CONTAINER FILTER CATEGORIES %>
+    <%# <div class="categories-filter">
+      <button type="button" class="btn btn-filter">Dinner</button>
+      <button type="button" class="btn btn-filter">Cooking Class</button>
+      <button type="button" class="btn btn-filter">Food Tour</button>
+      <button type="button" class="btn btn-filter">Brunch</button>
+    </div> %>
+
+    <div class="card-event-little-all">
+      <% @events.each do |event| %>
+        <%= link_to event_path(event), class:'card-event-little mb-4' do %>
+          <% if event.photos.attached? %>
+            <%= cl_image_tag event.photos.first.key, height: 100, width: 200, crop: :fill %>
+          <% else %>
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg"/>
           <% end %>
-        </div>
-      </div>
+          <div class="card-event-little-infos">
+              <h6><%= event.title.capitalize %></h6>
+              <%= Event::FLAGS[event.language.to_sym] %>
+          </div>
+              <p><%= event.date.strftime('%d %b %Y') %></p>
+              <% if event.bookings.where(confirmation: true).sum(&:nb_guest) == 0 %>
+                <p style="color: red">Fully Booked!</p>
+              <% else %>
+                <p style="color: #F93C52">👉 <%= pluralize(event.bookings.where(confirmation: true).sum(&:nb_guest),'place')%></p>
+              <% end %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>
