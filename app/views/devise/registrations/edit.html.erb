@@ -1,8 +1,7 @@
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= f.error_notification %>
-
-    <div class="form-input-user">
+  <div class="form-input-user">
       <h2>Edit profile </h2>
 
       <div>
@@ -15,16 +14,18 @@
 
       <div class="row">
         <div class="col-6 mb-4 mt-4">
-          <%= f.input :first_name, label: 'First Name' %>
+          <label >First name</label>
+          <%= f.input :first_name %>
         </div>
         <div class="col-6 mb-4 mt-4 ">
-          <%= f.input :last_name, label: 'Last Name' %>
+          <label >Last name</label>
+          <%= f.input :last_name %>
         </div>
         <div class="col-12 mb-4">
           <%= f.input :address, label: 'Address' %>
         </div>
         <div class="col-12 mb-4">
-          <%= f.input :bio, label: 'Bio' %>
+          <%= f.input :bio, as: :text, label: 'Bio' %>
         </div>
          <%= f.input :photo, label: 'Change your picture', as: :file %>
 
@@ -48,19 +49,15 @@
 
       </div>
 
-
-
-
-    </div>
+   </div>
 
     <div class="form-actions-user">
       <%= f.button :submit, "Update", class: "btn btn-primary" %>
     </div>
+
   <% end %>
 
   <div class="d-flex align-items-center">
     <div>Unhappy?</div>
     <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-link" %>
   </div>
-
-  <%= link_to "Back", :back %>
