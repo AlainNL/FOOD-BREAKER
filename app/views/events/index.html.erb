@@ -3,28 +3,20 @@
     <div class="col-sm-8">
       <div id="events">
 
-        <div class="input-group my-4">
-          <div class ="input-primary mb-2">
-            <i class="fa-solid fa-location-dot pin-form"></i>
-            <%= form_tag events_path, method: :get, class: "d-flex" do %>
+        <div class="input-group my-5" style="padding: 0px 16px 0px 16px">
+          <p class="text-sm-start">Apprend une nouvelle langue avec FoodBreaker !</p>
+            <%= form_tag events_path, method: :get, class: "d-flex justify-content-between" do %>
               <%= text_field_tag :address,
                 params[:query],
                 class: "form-input",
                 placeholder: '&nbsp'.html_safe
               %>
-            <% end %>
-          </div>
-
-          <div class="input-secondary mb-2">
-            <i class="fa-solid fa-comment pin-form-2"></i>
-            <%= form_tag events_path, method: :get do %>
             <%= text_field_tag :language,
               params[:query],
               class: "form-secondary",
               placeholder: '&nbsp'.html_safe
             %>
             <% end %>
-
             <%= simple_form_for [@event],
                           html: {
                             data: {
@@ -40,8 +32,15 @@
                           }
                         }, label: '&nbsp'.html_safe, required: false %>
             <% end %>
-          </div>
 
+        </div>
+
+        <%# CONTAINER FILTER CATEGORIES %>
+        <div class="categories-filter">
+          <button type="button" class="btn btn-filter">Dinner</button>
+          <button type="button" class="btn btn-filter">Cooking Class</button>
+          <button type="button" class="btn btn-filter">Food Tour</button>
+          <button type="button" class="btn btn-filter">Brunch</button>
         </div>
 
         <% @events.each do |event| %>
