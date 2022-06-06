@@ -2,15 +2,9 @@
   <div class="row justify-content-center">
     <div class="col-sm-8">
       <div id="events">
-        <div class="categories-layout">
-          <i class="fa-solid fa-utensils categories-form"></i>
-          <i class="fa-solid fa-utensils categories-form"></i>
-          <i class="fa-solid fa-utensils categories-form"></i>
-          <i class="fa-solid fa-utensils categories-form"></i>
-        </div>
 
         <div class="input-group my-5" style="padding: 0px 16px 0px 16px">
-          <p class="text-sm-start">Apprend une nouvelle langue avec FoodBreaker !</p>
+          <p class="text-sm-start">FoodBreaker, join the network and break the ice otherwise !</p>
             <%= form_tag events_path, method: :get, class: "d-flex justify-content-between" do %>
               <%= text_field_tag :address,
                 params[:query],
@@ -49,29 +43,27 @@
           <button type="button" class="btn btn-filter">Brunch</button>
         </div>
 
-        <% @events.each do |event| %>
-          <%= link_to event_path(event), class:'card-event' do %>
-            <% if event.photos.attached? %>
-              <%= cl_image_tag event.photos.first.key, height: 100, width: 200, crop: :fill %>
-            <% else %>
-              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg"/>
+        <div class="card-event-little-all">
+          <% @events.each do |event| %>
+            <%= link_to event_path(event), class:'card-event-little mb-4' do %>
+              <% if event.photos.attached? %>
+                <%= cl_image_tag event.photos.first.key, height: 100, width: 200, crop: :fill %>
+              <% else %>
+                <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg"/>
+              <% end %>
+              <div class="card-event-little-infos">
+                  <h6><%= event.title.capitalize %></h6>
+                  <%= Event::FLAGS[event.language.to_sym] %>
+              </div>
+                  <p><%= event.date.strftime('%d %b %Y') %></p>
+                  <% if event.bookings.where(confirmation: true).sum(&:nb_guest) == 0 %>
+                    <p style="color: red">Fully Booked!</p>
+                  <% else %>
+                    <p style="color: #F93C52">👉 <%= pluralize(event.bookings.where(confirmation: true).sum(&:nb_guest),'place')%></p>
+                  <% end %>
             <% end %>
-            <div class="card-event-infos">
-              <div class="card-event-infos__avatar">
-                <% if event.user.photo.attached? %>
-                  <%= cl_image_tag event.user.photo.key, class: "avatar"%>
-                <% else %>
-                  <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="avatar"/>
-                <% end %>
-                  <img src=<%= Event::FLAGS[event.language.to_sym] %> class="flag" style="margin-right:auto"/>
-              </div>
-              <div class="card-event-infos__title">
-                <h2><%= event.title.capitalize %></h2>
-                <p><%= event.date.strftime('%d/%m/%Y') %></p>
-              </div>
-            </div>
           <% end %>
-        <% end %>
+        </div>
       </div>
     </div>
   </div>
