@@ -19,18 +19,11 @@ Event.destroy_all
 
 puts "Event.destroy_all finish !"
 
-
 puts "User.destroy_all start..."
 
 User.destroy_all
 
 puts "User.destroy_all finish !"
-
-puts "Network.destroy_all start ..."
-
-Network.destroy_all
-
-puts "Network.destroy_all finish !"
 
 sleep(1)
 
@@ -65,26 +58,42 @@ puts "Event seed start..."
 pierreEvent = Event.new(title: "frendly Dinner", category: "Dinner", address: "17 boulevard clemenceau 35000 Rennes", description: "Dinner with friends around French cheeses and wines", date: "12/06/2022", language: "French", capacity: 10, user: pierre)
 pierreEvent.photos.attach(io: URI.open("https://source.unsplash.com/random?food"), filename: "pierreEvent.png", content_type: "image/png")
 pierreEvent.save!
+chatroom1 = Chatroom.new(event: pierreEvent)
+chatroom1.save!
+
 
 pierreEvent2 = Event.new(title: "Brunch on the beach", category: "Brunch", address: "plage du solidor 35400 Saint-Malo", description: "Take a gourmet break with a brunch of Brittany ! We can have a chat before over food as French cheese, French charcuterie, bread, pancakes and cider!!", date: "15/06/2022", language: "English", capacity: 8, user: pierre)
 pierreEvent2.photos.attach(io: URI.open("https://source.unsplash.com/random?food"), filename: "pierreEvent2.png", content_type: "image/png")
 pierreEvent2.save!
+chatroom2 = Chatroom.new(event: pierreEvent2)
+chatroom2.save!
 
+#
 pierreEvent3 = Event.new(title: "French pastries tour", category: "Food Tour", address: "17 boulevard Clemenceau 35000 Rennes", description: "Tour to taste a sample of French pastries produced locally.", date: "19/04/2022", language: "French", capacity: 3, user: pierre)
 pierreEvent3.photos.attach(io: URI.open("https://source.unsplash.com/random?food"), filename: "pierreEvent2.png", content_type: "image/png")
 pierreEvent3.save!
+chatroom3 = Chatroom.new(event: pierreEvent3)
+chatroom3.save!
+
 
 sarahEvent = Event.new(title: "Learn Portuguese Food", category: "Cooking Class", address: "17 boulevard clemenceau 35000 Rennes", description: "Portuguese food, songs and fun!", date: "28/06/2022", language: "French", capacity: 5, user: sarah)
 sarahEvent.photos.attach(io: URI.open("https://source.unsplash.com/random?food"), filename: "sarahEvent.png", content_type: "image/png")
 sarahEvent.save!
 
+chatroom4 = Chatroom.new(event: sarahEvent)
+chatroom4.save!
+
 nicolasEvent = Event.new(title: "Dim Sum Cooking Class", category: "Cooking Class", address: "Tour eiffel", description: "Learn how to make Dim with friends", date: "13/08/2022", language: "French", capacity: 6, user: nicolas)
 nicolasEvent.photos.attach(io: URI.open("https://source.unsplash.com/random?food"), filename: "nicolasEvent.png", content_type: "image/png")
 nicolasEvent.save!
+chatroom5 = Chatroom.new(event: nicolasEvent)
+chatroom5.save!
 
 nicolasEvent2 = Event.new(title: "Pizza Cooking Class", category: "Cooking Class", address: "66, rue de l'arbre sec 75001 Paris", description: "Learn how to make delicious pizza", date: "27/09/2022", language: "English", capacity: 4, user: nicolas)
-nicolasEvent.photos.attach(io: URI.open("https://source.unsplash.com/random?food"), filename: "nicolasEvent.png", content_type: "image/png")
+nicolasEvent2.photos.attach(io: URI.open("https://source.unsplash.com/random?food"), filename: "nicolasEvent.png", content_type: "image/png")
 nicolasEvent2.save!
+chatroom6 = Chatroom.new(event: nicolasEvent2)
+chatroom6.save!
 
 puts "Event seed finish !"
 
@@ -100,28 +109,6 @@ Booking.create(nb_guest: "6", confirmation: true, user_id: juliette.id, event_id
 Booking.create(nb_guest: "3", confirmation: true, user_id: pierre.id, event_id: nicolasEvent2.id )
 
 puts "Booking seed finish..."
-
-sleep(1)
-
-puts "Network seed start..."
-
-company = Network.create(name: "My company", user_id: juliette.id)
-Network.create(name: "Good Food", user_id: louis.id)
-Network.create(name: "Wine Lovers", user_id: nicolas.id)
-pizza = Network.create(name: "Pizzzzzaaaaa !!!!!!", user_id: nicolas.id)
-
-puts "Network seed finish..."
-
-sleep(1)
-
-puts "Networks User seed start..."
-
-NetworksUser.create(user_id: juliette.id, network_id: pizza.id)
-NetworksUser.create(user_id: pierre.id, network_id: pizza.id)
-NetworksUser.create(user_id: nicolas.id, network_id: company.id)
-NetworksUser.create(user_id: louis.id, network_id: company.id)
-
-puts "Networks User seed finish..."
 
 sleep(1)
 
