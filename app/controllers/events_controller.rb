@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   def index
     # raise
     @events = Event.order("events.date ASC")
-
+    @review = Review.new
     if params.dig(:filters, :address).present?
       sql_query = <<~SQL
         events.address ILIKE :query
@@ -55,6 +55,7 @@ class EventsController < ApplicationController
   #   end
     @event = Event.new
     @booking = Booking.new
+    @event = Event.all
     #raise
   end
 
@@ -62,6 +63,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @review = Review.new
     @markers = [
       {
         lat: @event.latitude,
