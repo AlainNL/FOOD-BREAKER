@@ -1,4 +1,10 @@
 class Event < ApplicationRecord
+  FLAGS = {
+    French: "🇫🇷",
+    English: "🇬🇧",
+    Spanish: "🇪🇸",
+    Portuguese: "🇵🇹"
+  }
   belongs_to :user
   has_many :bookings
   has_many :participants, through: :bookings, source: :user

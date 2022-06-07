@@ -19,6 +19,7 @@ Event.destroy_all
 
 puts "Event.destroy_all finish !"
 
+
 puts "User.destroy_all start..."
 
 User.destroy_all
