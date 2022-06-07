@@ -4,10 +4,11 @@ Rails.application.routes.draw do
   resources :events do
     resources :bookings, only: [:create, :update]
   end
-  resources :bookings, only: [:destroy]
-  resources :networks, except: [:new, :index]
   resources :chatrooms, only: :show do
     resources :messages, only: :create
+    # get "/chatroom", to: "events#chatroom", as: :chatroom
   end
+  resources :bookings, only: [:destroy]
+  # resources :networks, except: [:new, :index]
   get "/dashboard", to: "dashboards#dashboard", as: :dashboard
 end
