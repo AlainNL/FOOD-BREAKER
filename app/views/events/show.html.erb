@@ -75,7 +75,7 @@
           <div class="card-show__footer">
 
 
-            <!-- COUNTER PARTICIPANTS OPEN-->
+            <!-- JS COUNTER PARTICIPANTS OPEN-->
 
             <div class="container-counter">
                 <!-- adding button and heading to show the digits -->
@@ -87,10 +87,20 @@
             <!-- JavaScript code-->
             <script>
                 //initialising a variable name data
-                var data = 0;
+                var data = 1;
 
                 //printing default value of data that is 0 in h2 tag
                 document.getElementById("counting").innerText = data;
+
+                //check if data > 0
+                function testNum(data) {
+                  if (data = 1) {
+                     return 1;
+                  } else {
+                    data - 1;
+                  }
+                  return data;
+                }
 
                 //creation of increment function
                 function increment() {
@@ -99,11 +109,11 @@
                 }
                 //creation of decrement function
                 function decrement() {
-                  data = data - 1;
+                  data = testNum(data);
                     document.getElementById("counting").innerText = data;
                 }
             </script>
-              <!-- COUNTER PARTICIPANTS CLOSE-->
+              <!-- JS COUNTER PARTICIPANTS CLOSE-->
 
               <!-- BUTTON PARTICIPATE OPEN -->
               <%= link_to event_bookings_path(@event, booking: {nb_guest: "4", user_id: current_user, event_id: @event.id}),data:{ turbo_method: :post}, class:"btn-primary" do %>
