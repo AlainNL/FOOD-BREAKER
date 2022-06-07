@@ -16,9 +16,11 @@
                 flatpickr_target: 'date',
               }
             }, required: false %>
-          <%= f.input :categories, as: :check_boxes, collection: ["Dinner", "Cooking Class", "Food Tour", "Brunch"], label: false, include_hidden: false, checked: params.dig(:filters, :categories) %>
-          <%= f.submit "filter", class: "w-100" %>
+          <%= f.input :categories, as: :check_boxes, input_html: { class: "tag-selector" }, item_wrapper_class: 'tag-item', collection: ["Dinner", "Cooking Class", "Food Tour", "Brunch"], label: false, include_hidden: false, checked: params.dig(:filters, :categories) %>
+          <%= f.submit "CHERCHER +", class: "btn-primary w-100" %>
         <% end %>
+
+          <%# <div class="btn-primary text-center">PARTICIPATE +</div> %>
 
         <%#= form_tag events_path, method: :get, class: "search-items" do %>
           <%#= text_field_tag :address,
