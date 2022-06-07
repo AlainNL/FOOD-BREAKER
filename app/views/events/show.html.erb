@@ -4,51 +4,84 @@
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade rounded-bottom" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <%# <div class="modal-header">
-      </div> %>
+
       <%# DIV BODY%>
       <div class="position: relative flex: 1 1 auto">
         <%# MODAL BODY - WRITE CODE DOWNHERE %>
-        <%# <div class="card-event"> %>
-        <div class="w-100 image-modal" style="height: 30vh ">
+          <%# IMAGE %>
+        <div class="w-100 image-modal" >
           <% if @event.photos.attached? %>
-            <%= cl_image_tag @event.photos.first.key%>
+            <%= cl_image_tag @event.photos.first.key,  height: 250, width: 372, crop: :fill%>
           <% else %>
             <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg"/>
           <% end %>
           <button class="button-back" type="button" data-bs-dismiss="modal" aria-label="Close" style="position: absolute; top: 24px; left: 20px; padding: 12px;"><i class="fa-solid fa-arrow-left position-relative"></i></button>
         </div>
 
+        <%# CARD SHOW %>
         <div class="card-show">
           <div class="d-flex justify-content-between">
             <h6><%=@event.title%></h6>
-            <h6><%= Event::FLAGS[@event.language.to_sym] %></h6>
+            <div style="font-size: 30px;"><%= Event::FLAGS[@event.language.to_sym] %></div>
           </div>
           <p><%=@event.description%></p>
         </div>
 
-        <div style="width: 100%; height: 150px; margin-top: 60px"
-          data-controller="map"
-          data-map-markers-value="<%= @markers.to_json %>"
-          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        <div class="ms-3 me-3">
+          <div class="card-show__map"
+            data-controller="map"
+            data-map-markers-value="<%= @markers.to_json %>"
+            data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+          </div>
         </div>
 
-        <div class="mt-4">
-          <%= link_to event_bookings_path(@event, booking: {nb_guest: "4", user_id: current_user, event_id: @event.id}),data:{ turbo_method: :post}, class:'btn-primary' do %>
-            PARTICIPATE +
-          <% end %>
-        </div>
 
+        <br>
+        <br>
+        <br>
+
+          <div class="card-show__footer">
+
+
+            <!-- COUNTER PARTICIPANTS-->
+
+            <div class="container-counter">
+                <!-- adding button and heading to show the digits -->
+                <!-- increment() and decrement() functions on button click-->
+                <button type="button" class="btn btn-light" style="font-size: 18px; font-weight: bold;" onclick="decrement()">-</button>
+                <h4 id="counting"></h4>
+                <button type="button" class="btn btn-light" style="font-size: 18px; font-weight: bold;" onclick="increment()">+</button>
+            </div>
+            <!-- JavaScript code-->
+            <script>
+                //initialising a variable name data
+                var data = 0;
+
+                //printing default value of data that is 0 in h2 tag
+                document.getElementById("counting").innerText = data;
+
+                //creation of increment function
+                function increment() {
+                  data = data + 1;
+                    document.getElementById("counting").innerText = data;
+                }
+                //creation of decrement function
+                function decrement() {
+                  data = data - 1;
+                    document.getElementById("counting").innerText = data;
+                }
+            </script>
+
+              <%= link_to event_bookings_path(@event, booking: {nb_guest: "4", user_id: current_user, event_id: @event.id}),data:{ turbo_method: :post}, class:"btn-primary" do %>
+                PARTICIPATE +
+              <% end %>
+        <%# ////////////// FOOTER CLOSE //////////// %>
+          </div>
         <%# ////////////// MODAL BODY CLOSE //////////// %>
-
       </div>
-      <%# <div class="modal-footer"> %>
-        <%# <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button> %>
-      <%# </div> %>
     </div>
   </div>
 </div>
