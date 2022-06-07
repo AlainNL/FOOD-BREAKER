@@ -19,12 +19,29 @@ Event.destroy_all
 
 puts "Event.destroy_all finish !"
 
+<<<<<<< HEAD
+=======
+NetworksUser.destroy_all
+
+puts "Network USER.destroy_all start ..."
+
+puts "Network.destroy_all start ..."
+
+Network.destroy_all
+
+puts "Network.destroy_all finish !"
+
+>>>>>>> master
 puts "User.destroy_all start..."
 
 User.destroy_all
 
 puts "User.destroy_all finish !"
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 sleep(1)
 
 puts "User seed start..."

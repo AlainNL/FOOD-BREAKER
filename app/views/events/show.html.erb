@@ -20,10 +20,13 @@
     </div>
     <div class="card-event-infos__participants">
       <div>
-        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-event-user avatar"/>
-        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-event-user avatar"/>
-        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-event-user avatar"/>
-        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-event-user avatar"/>
+        <% @event.bookings.where(confirmation: true).each do |b| %>
+          <% if b.user.photo.attached? %>
+            <%= cl_image_tag b.user.photo.key, class: "card-event-user avatar"%>
+          <% else %>
+              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-event-user avatar"/>
+          <% end %>
+        <%end%>
       </div>
       <p>4/5</p>
     </div>
@@ -35,7 +38,6 @@
   </div>
 </div>
 
-
 <div class="event-description">
     <p><%=@event.description%></p>
 </div>
@@ -44,7 +46,7 @@
   <div class="btn-primary text-center">PARTICIPATE +</div>
 <% end %>
 
-<div style="width: 100%; height: 300px; margin-top: 60px"
+<div style="width: 100%; height: 150px; margin-top: 60px"
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">

@@ -5,11 +5,20 @@
       <span class="navbar-toggler-icon"></span>
     </button> %>
 
+<<<<<<< HEAD
     <%# <% if user_signed_in? %>
       <%#= link_to chatroom_path(Chatroom.first) do %>
         <%# <i class="fa-solid fa-comments navbar-lewagon-icon"></i> %>
       <%# <% end %>
     <%# <% end %>
+=======
+
+    <%# if user_signed_in? %>
+      <%#= link_to chatroom_path(Chatroom.first) do %>
+        <%# <i class="fa-solid fa-comments navbar-lewagon-icon"></i> %>
+      <%# <% end %> %>
+    <%# <% end %> %>
+>>>>>>> master
 
     <% if user_signed_in? %>
       <%= link_to destroy_user_session_path, data: {turbo_method: :delete} do %>
