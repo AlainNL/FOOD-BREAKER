@@ -46,6 +46,23 @@
   <div class="btn-primary text-center">PARTICIPATE +</div>
 <% end %>
 
+<div class="review-description">
+  <div data-controller="insert-in-list" data-insert-in-list-position-value="beforeend">
+    <div data-insert-in-list-target="items">
+      <h3><%= @event.title %> <small><%= @event.address %></small></h3>
+      <p><%= pluralize @event.reviews.size, "review" %><p>
+        <% if @event.reviews.blank? %>
+        Be the first to leave a review for <%= @event.title %>
+        <% else %>
+          <% @event.reviews.each do |review| %>
+            <p><%= review.content %></p>
+          <% end %>
+        <% end %>
+    </div>
+    <%= render 'reviews/form', event: @event, review: @review %>
+  </div>
+</div>
+
 <div style="width: 100%; height: 150px; margin-top: 60px"
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
