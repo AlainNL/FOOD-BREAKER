@@ -52,10 +52,13 @@
   }
 }
 
- .card-event-infos__title {
+ .card-event-infos__title_dash {
    position: absolute;
-   right: 110px;
-   top: 48px;
+   //right: 110px;
+   top: 60px;
+   display: flex;
+   width: 50%;
+   justify-content: space-between;
  }
 
 // .card-event-infos__participants {
