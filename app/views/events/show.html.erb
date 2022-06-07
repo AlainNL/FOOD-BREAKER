@@ -1,53 +1,73 @@
-<div class="card-event">
-  <% if @event.photos.attached? %>
-    <%= cl_image_tag @event.photos.first.key%>
-  <% else %>
-    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg"/>
-  <% end %>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
 
-
-
-
-  <div class="card-event-infos">
-    <div class="card-event-infos__avatar">
-      <% if @event.user.photo.attached? %>
-        <%= cl_image_tag @event.user.photo.key, class: "avatar"%>
-      <% else %>
-        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="avatar"/>
-      <% end %>
-
-      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="flag" style="margin-right:auto"/>
-    </div>
-    <div class="card-event-infos__participants">
-      <div>
-        <% @event.bookings.where(confirmation: true).each do |b| %>
-          <% if b.user.photo.attached? %>
-            <%= cl_image_tag b.user.photo.key, class: "card-event-user avatar"%>
-          <% else %>
-              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-event-user avatar"/>
-          <% end %>
-        <%end%>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <p>4/5</p>
+      <div class="modal-body">
+
+        <%# MODAL BODY - WRITE CODE DOWNHERE %>
+        <div class="card-event">
+          <% if @event.photos.attached? %>
+            <%= cl_image_tag @event.photos.first.key%>
+          <% else %>
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg"/>
+          <% end %>
+
+          <div class="card-event-infos">
+            <div class="card-event-infos__avatar">
+              <% if @event.user.photo.attached? %>
+                <%= cl_image_tag @event.user.photo.key, class: "avatar"%>
+              <% else %>
+                <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="avatar"/>
+              <% end %>
+
+            </div>
+            <div class="card-event-infos__participants">
+              <div>
+                <% @event.bookings.where(confirmation: true).each do |b| %>
+                  <% if b.user.photo.attached? %>
+                    <%= cl_image_tag b.user.photo.key, class: "card-event-user avatar"%>
+                  <% else %>
+                      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-event-user avatar"/>
+                  <% end %>
+                <%end%>
+              </div>
+            </div>
+          </div>
+          <div class="infos-title">
+            <h2><%=@event.title.capitalize%></h2>
+            <p><%= @event.date.strftime('%d/%m/%Y') %></p>
+          </div>
+        </div>
+
+        <div class="event-description">
+            <p><%=@event.description%></p>
+        </div>
+
+        <%= link_to event_bookings_path(@event, booking: {nb_guest: "4", user_id: current_user, event_id: @event.id}),data:{ turbo_method: :post}, class:'btn-participate' do %>
+          <div class="btn-primary text-center">PARTICIPATE +</div>
+        <% end %>
+
+        <div style="width: 100%; height: 150px; margin-top: 60px"
+          data-controller="map"
+          data-map-markers-value="<%= @markers.to_json %>"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+        <%# ////////////// MODAL BODY CLOSE //////////// %>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
     </div>
   </div>
-  <div class="infos-title">
-    <h2><%=@event.title.capitalize%></h2>
-    <p><%= @event.date.strftime('%d/%m/%Y') %></p>
-    <i class="fa-solid fa-kitchen-set pin-form"></i>
-  </div>
-</div>
-
-<div class="event-description">
-    <p><%=@event.description%></p>
-</div>
-
-<%= link_to event_bookings_path(@event, booking: {nb_guest: "4", user_id: current_user, event_id: @event.id}),data:{ turbo_method: :post}, class:'btn-participate' do %>
-  <div class="btn-primary text-center">PARTICIPATE +</div>
-<% end %>
-
-<div style="width: 100%; height: 150px; margin-top: 60px"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
