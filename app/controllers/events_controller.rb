@@ -70,9 +70,24 @@ class EventsController < ApplicationController
     ]
   end
 
+  def create
+    #Creation d'Event
+    #Création de chatroom lié à l'event
+    @event = Event.new(event_params)
+    @event.user = current_user
+
+    if @event.save
+      @chatroom = Chatroom.new
+      @chatroom.event = @event
+      redirect_to chatroom_path(@chatroom)
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def event_params
-    params.require(:event).permit(:title, :category, :address, :description, :date, :language, :capacity, :rating, :photos, :user_id, :query)
+    params.require(:event).permit(:title, :category, :address, :description, :date, :language, :capacity, :rating, :photos, :query)
   end
 end

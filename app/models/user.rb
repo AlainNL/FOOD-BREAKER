@@ -1,8 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   has_many :events
-  has_many :networks
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
 
   has_one_attached :photo
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
