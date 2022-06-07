@@ -21,3 +21,13 @@ a {
     text-decoration: none;
   }
 }
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+  color: #FA3C53;
+  font-weight: bold;
+  border: 0;
+}
+
+.nav-link{
+  transition: none;
+}

@@ -19,13 +19,6 @@ Event.destroy_all
 
 puts "Event.destroy_all finish !"
 
-
-puts "User.destroy_all start..."
-
-User.destroy_all
-
-puts "User.destroy_all finish !"
-
 sleep(1)
 
 puts "User seed start..."
@@ -69,7 +62,7 @@ pierreEvent2.save!
 chatroom2 = Chatroom.new(event: pierreEvent2)
 chatroom2.save!
 
-#
+
 pierreEvent3 = Event.new(title: "French pastries tour", category: "Food Tour", address: "17 boulevard Clemenceau 35000 Rennes", description: "Tour to taste a sample of French pastries produced locally.", date: "19/04/2022", language: "French", capacity: 3, user: pierre)
 pierreEvent3.photos.attach(io: URI.open("https://source.unsplash.com/random?food"), filename: "pierreEvent2.png", content_type: "image/png")
 pierreEvent3.save!
@@ -96,6 +89,10 @@ nicolasEvent2.save!
 chatroom6 = Chatroom.new(event: nicolasEvent2)
 chatroom6.save!
 
+nicolasEvent3 = Event.new(title: "Dinner with friends", category: "Dinner", address: "24, rue des jeuneurs 75002", description: "You will be my special guest! Fond of food, I will be happy to share my favorite receipes", date: "17/01/2022", language: "French", capacity: 4, user: nicolas)
+nicolasEvent3.photos.attach(io: URI.open("https://source.unsplash.com/random?food"), filename: "nicolasEvent.png", content_type: "image/png")
+nicolasEvent3.save!
+
 puts "Event seed finish !"
 
 sleep(1)
@@ -108,6 +105,7 @@ Booking.create(nb_guest: "1", confirmation: true, user_id: louis.id, event_id: p
 Booking.create(nb_guest: "2", confirmation: true, user_id: juliette.id, event_id: sarahEvent.id )
 Booking.create(nb_guest: "6", confirmation: true, user_id: juliette.id, event_id: pierreEvent3.id )
 Booking.create(nb_guest: "3", confirmation: true, user_id: pierre.id, event_id: nicolasEvent2.id )
+Booking.create(nb_guest: "1", confirmation: true, user_id: pierre.id, event_id: nicolasEvent3.id )
 
 puts "Booking seed finish..."
 
