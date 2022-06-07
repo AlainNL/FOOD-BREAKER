@@ -75,6 +75,7 @@ class EventsController < ApplicationController
     #Création de chatroom lié à l'event
     @event = Event.new(event_params)
     @event.user = current_user
+    @event.save
 
     if @event.save
       @chatroom = Chatroom.new

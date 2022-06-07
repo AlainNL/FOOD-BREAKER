@@ -1,0 +1,11 @@
+ <%= simple_form_for @event do |f| %>
+            <%= f.input :photos, label: 'Add some pictures', as: :files %>
+            <%= f.input :title, label: 'Event title' %>
+            <%= f.input :address, label: 'Location' %>
+            <%= f.input :description, as: :text, label: 'More about your event' %>
+            <%= f.input :category, as: :check_boxes, collection: ["Dinner", "Cooking Class", "Food Tour", "Brunch"] %>
+            <% render '/form'%>
+            <%= f.input :language, as: :check_boxes, collection: Event::FLAGS %>
+            <%= f.input :capacity, label: 'Guests #' %>
+            <%= f.submit "Register", class: 'btn btn-primary'%>
+          <% end %>
