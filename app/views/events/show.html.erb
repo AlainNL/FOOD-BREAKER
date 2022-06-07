@@ -28,15 +28,44 @@
             <div style="font-size: 30px;"><%= Event::FLAGS[@event.language.to_sym] %></div>
           </div>
           <p><%=@event.description%></p>
+
+
+          <div data-controller="insert-in-list" data-insert-in-list-position-value="beforeend">
+            <div data-insert-in-list-target="items">
+              <p><%= pluralize @event.reviews.size, "review" %><p>
+                <% if @event.reviews.blank? %>
+                  Be the first to leave a review for <%= @event.title %>
+                <% else %>
+                  <% @event.reviews.each do |review| %>
+                    <p><%= review.content %></p>
+                  <% end %>
+                <% end %>
+            </div>
+            <%= render 'reviews/form', event: @event, review: @review %>
+          </div>
+
+          <p><%= pluralize @event.reviews.size, "review" %><p>
+          <% if @event.reviews.blank? %>
+            Be the first to leave a review for <%= @event.title %>
+          <% else %>
+            <% @event.reviews.each do |review| %>
+              <p><%= review.content %></p>
+            <% end %>
+          <% end %>
         </div>
 
-        <div class="ms-3 me-3">
+        <!-- MAPBOX OPEN -->
+
+        <div class="ms-3 me-3 p-2">
+          <p style="color: rgba(99, 99, 99, 0.6);font-size: 13px;font-weight: bold;"><%= @event.address %><p>
           <div class="card-show__map"
             data-controller="map"
             data-map-markers-value="<%= @markers.to_json %>"
             data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
           </div>
         </div>
+
+        <!-- MAPBOX CLOSE -->
 
 
         <br>
@@ -46,7 +75,7 @@
           <div class="card-show__footer">
 
 
-            <!-- COUNTER PARTICIPANTS-->
+            <!-- COUNTER PARTICIPANTS OPEN-->
 
             <div class="container-counter">
                 <!-- adding button and heading to show the digits -->
@@ -74,38 +103,18 @@
                     document.getElementById("counting").innerText = data;
                 }
             </script>
+              <!-- COUNTER PARTICIPANTS CLOSE-->
 
+              <!-- BUTTON PARTICIPATE OPEN -->
               <%= link_to event_bookings_path(@event, booking: {nb_guest: "4", user_id: current_user, event_id: @event.id}),data:{ turbo_method: :post}, class:"btn-primary" do %>
                 PARTICIPATE +
               <% end %>
+              <!-- BUTTON PARTICIPATE CLOSE -->
+
         <%# ////////////// FOOTER CLOSE //////////// %>
           </div>
         <%# ////////////// MODAL BODY CLOSE //////////// %>
       </div>
     </div>
   </div>
-
-<div class="review-description">
-  <div data-controller="insert-in-list" data-insert-in-list-position-value="beforeend">
-    <div data-insert-in-list-target="items">
-      <h3><%= @event.title %> <small><%= @event.address %></small></h3>
-      <p><%= pluralize @event.reviews.size, "review" %><p>
-        <% if @event.reviews.blank? %>
-        Be the first to leave a review for <%= @event.title %>
-        <% else %>
-          <% @event.reviews.each do |review| %>
-            <p><%= review.content %></p>
-          <% end %>
-        <% end %>
-    </div>
-    <%= render 'reviews/form', event: @event, review: @review %>
-  </div>
-</div>
-
-<div style="width: 100%; height: 150px; margin-top: 60px"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-
-
 </div>
