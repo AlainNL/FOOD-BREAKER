@@ -1,4 +1,9 @@
 class EventsController < ApplicationController
+
+  def new
+    @event = Event.new
+  end
+
   def index
     # raise
     @events = Event.order("events.date ASC")

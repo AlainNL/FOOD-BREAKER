@@ -1,11 +1,24 @@
- <%= simple_form_for @event do |f| %>
-            <%= f.input :photos, label: 'Add some pictures', as: :files %>
+ <div class="justify-content-center">
+  <div class="input-group mt-5" style="padding: 0px 16px 0px 16px">
+  <p class="text-sm-start"><strong>Create your event!</strong></p>
+    <%= simple_form_for @event, html: { data: { controller: 'flatpickr' } } do |f| %>
+            <%= f.input :photos, label: 'Add some pictures', as: :file, input_html: { multiple: true }  %>
             <%= f.input :title, label: 'Event title' %>
             <%= f.input :address, label: 'Location' %>
             <%= f.input :description, as: :text, label: 'More about your event' %>
-            <%= f.input :category, as: :check_boxes, collection: ["Dinner", "Cooking Class", "Food Tour", "Brunch"] %>
-            <% render '/form'%>
-            <%= f.input :language, as: :check_boxes, collection: Event::FLAGS %>
+            <%= f.input :category, as: :check_boxes, input_html: { class: "tag-selector", multiple: false }, item_wrapper_class: 'tag-item', collection: ["Dinner", "Cooking Class", "Food Tour", "Brunch"], label: false, include_hidden: false %>
+            <%= f.input :language, as: :check_boxes, input_html: { class: "tag-selector" }, item_wrapper_class: 'tag-item', collection: Event::FLAGS, label: false, include_hidden: false %>
             <%= f.input :capacity, label: 'Guests #' %>
+            <label for="exampleFormControlSelect1">Example select</label>
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+            <%= f.input :date, as: :string, input_html: { data: { flatpickr_target: 'date' } } %>
             <%= f.submit "Register", class: 'btn btn-primary'%>
           <% end %>
+  </div>
+</div>

@@ -5,6 +5,10 @@ import flatpickr from "flatpickr"
 export default class extends Controller {
   static targets = [ 'date' ]
   connect() {
-    flatpickr(this.dateTarget)
+
+    console.log(this.dateTarget)
+    flatpickr(this.dateTarget, {
+      allowInput: true
+    })
   }
 }

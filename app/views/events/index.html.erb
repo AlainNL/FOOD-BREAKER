@@ -2,7 +2,7 @@
 <div class="justify-content-center">
   <div id="events">
     <div class="input-group mt-5" style="padding: 0px 16px 0px 16px">
-      <p class="text-sm-start"><strong>FoodBreaker, join the first food network for expatriates !</strong></p>
+      <p class="text-sm-start"><strong>FoodBreaker, join the first food network for expatriates!</strong></p>
         <%= simple_form_for :filters, url: events_path, html: { class: "w-100 filter-form", data: { controller: 'flatpickr' }}, method: :get do |f| %>
           <%= f.input :address, placeholder: 'Where are you?', label: false, input_html: { value: params.dig(:filters, :address) } %>
           <%= f.input :language, collection: Event::FLAGS.map(&:reverse), label: false, selected: params.dig(:filters, :language) || "French" %>
