@@ -33,7 +33,7 @@
   justify-content: space-between;
   align-items: center;
   position: relative;
-  top: -42px;
+  top: -44px;
 }
 
 // .card-event-infos .card-event-user {
@@ -52,11 +52,14 @@
   }
 }
 
- .card-event-infos__title {
-   position: absolute;
-   right: 110px;
-   top: 48px;
- }
+.card-event-infos__title_dash {
+  position: absolute;
+ //right: 110px;
+  top: 77px;
+  display: flex;
+  width: 75%;
+  justify-content: space-between;
+}
 
 // .card-event-infos__participants {
 //   display: flex;

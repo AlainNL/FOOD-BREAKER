@@ -1,4 +1,4 @@
-<div class="card mb-3">
+<div class="card mb-2 mt-3">
   <div class="row align-items-center">
     <div class="col-4">
       <% if @user.photo.attached? %>
@@ -21,10 +21,12 @@
 
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item" role="presentation">
-    <button class="nav-link active" id="future-tab" data-bs-toggle="tab" data-bs-target="#future" type="button" role="tab" aria-controls="future" aria-selected="true">Coming events </button>
+    <button class="nav-link active" id="future-tab" data-bs-toggle="tab" data-bs-target="#future" type="button" role="tab" aria-controls="future" aria-selected="true"><i class="fa-regular fa-clock"></i>
+    Coming events </button>
   </li>
   <li class="nav-item" role="presentation">
-    <button class="nav-link" id="past-tab" data-bs-toggle="tab" data-bs-target="#past" type="button" role="tab" aria-controls="past" aria-selected="false">Past events</button>
+    <button class="nav-link" id="past-tab" data-bs-toggle="tab" data-bs-target="#past" type="button" role="tab" aria-controls="past" aria-selected="false"><i class="fa-regular fa-square-check"></i>
+    Past events</button>
   </li>
 </ul>
 
@@ -45,11 +47,14 @@
             <% else %>
               <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="avatar"/>
             <% end %>
-            <img src= <%= Event::FLAGS[e.language.to_sym] %> class="flag" style="margin-right:auto"/>
+
           </div>
-          <div class="card-event-infos__title">
-            <h2><%= e.title.capitalize %></h2>
-            <p><%= e.date.strftime('%d/%m/%Y') %></p>
+          <div class="card-event-infos__title_dash">
+            <div>
+              <h2><%= e.title.capitalize %></h2>
+              <p><%= e.date.strftime('%d/%m/%Y') %></p>
+            </div>
+            <p class="flag"><%= Event::FLAGS[e.language.to_sym] %> </p>
           </div>
           <div style="card-event-infos__participants">
             <div>
@@ -61,7 +66,6 @@
                 <% end %>
               <%end%>
             </div>
-            <p><%= e.bookings.where(confirmation: true).sum(&:nb_guest) %>/<%= e.capacity %></p>
           </div>
         </div>
       </div>
@@ -81,11 +85,13 @@
             <% else %>
               <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="avatar"/>
             <% end %>
-            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="flag" style="margin-right:auto"/>
           </div>
-          <div class="card-event-infos__title">
-            <h2><%= e.title.capitalize %></h2>
-            <p><%= e.date.strftime('%d/%m/%Y') %></p>
+          <div class="card-event-infos__title_dash">
+            <div>
+              <h2><%= e.title.capitalize %></h2>
+              <p><%= e.date.strftime('%d/%m/%Y') %></p>
+            </div>
+            <p class="flag"><%= Event::FLAGS[e.language.to_sym] %> </p>
           </div>
           <div style="card-event-infos__participants">
             <div>
@@ -97,7 +103,6 @@
                 <% end %>
               <%end%>
             </div>
-            <p><%= e.bookings.where(confirmation: true).sum(&:nb_guest) %>/<%= e.capacity %></p>
           </div>
         </div>
       </div>
@@ -119,11 +124,13 @@
             <% else %>
               <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="avatar"/>
             <% end %>
-            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="flag" style="margin-right:auto"/>
           </div>
-          <div class="card-event-infos__title">
-            <h2><%= e.title.capitalize %></h2>
-            <p><%= e.date.strftime('%m/%d/%Y') %></p>
+          <div class="card-event-infos__title_dash">
+            <div>
+              <h2><%= e.title.capitalize %></h2>
+              <p><%= e.date.strftime('%d/%m/%Y') %></p>
+            </div>
+            <p class="flag"><%= Event::FLAGS[e.language.to_sym] %> </p>
           </div>
           <div style="card-event-infos__participants">
             <div>
@@ -135,7 +142,6 @@
                 <% end %>
               <%end%>
             </div>
-            <p><%= e.bookings.where(confirmation: true).sum(&:nb_guest) %>/<%= e.capacity %></p>
           </div>
         </div>
       </div>
@@ -155,11 +161,13 @@
             <% else %>
               <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="avatar"/>
             <% end %>
-            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="flag" style="margin-right:auto"/>
           </div>
-          <div class="card-event-infos__title">
-            <h2><%= e.title.capitalize %></h2>
-            <p><%= e.date.strftime('%d/%m/%Y') %></p>
+          <div class="card-event-infos__title_dash">
+            <div>
+              <h2><%= e.title.capitalize %></h2>
+              <p><%= e.date.strftime('%d/%m/%Y') %></p>
+            </div>
+            <p class="flag"><%= Event::FLAGS[e.language.to_sym] %> </p>
           </div>
           <div style="card-event-infos__participants">
             <div>
@@ -171,9 +179,11 @@
                 <% end %>
               <%end%>
             </div>
-            <p><%= e.bookings.where(confirmation: true).sum(&:nb_guest) %>/<%= e.capacity %></p>
           </div>
         </div>
+        <%= link_to edit_user_registration_path do %>
+          <i class="btn btn-primary">Rate this event</i>
+        <% end %>
       </div>
     <% end %>
   </div>
