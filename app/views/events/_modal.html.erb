@@ -1,8 +1,3 @@
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button>
-
 <!-- Modal -->
 <div class="modal fade rounded-bottom" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -13,8 +8,8 @@
         <%# MODAL BODY - WRITE CODE DOWNHERE %>
           <%# IMAGE %>
         <div class="w-100 image-modal" >
-          <% if @event.photos.attached? %>
-            <%= cl_image_tag @event.photos.first.key,  height: 250, width: 372, crop: :fill%>
+          <% if event.photos.attached? %>
+            <%= cl_image_tag event.photos.first.key,  height: 250, width: 372, crop: :fill%>
           <% else %>
             <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg"/>
           <% end %>
@@ -24,31 +19,31 @@
         <%# CARD SHOW %>
         <div class="card-show">
           <div class="d-flex justify-content-between">
-            <h6><%=@event.title%></h6>
-            <div style="font-size: 30px;"><%= Event::FLAGS[@event.language.to_sym] %></div>
+            <h6><%=event.title%></h6>
+            <div style="font-size: 30px;"><%= Event::FLAGS[event.language.to_sym] %></div>
           </div>
-          <p><%=@event.description%></p>
+          <p><%=event.description%></p>
 
 
           <div data-controller="insert-in-list" data-insert-in-list-position-value="beforeend">
             <div data-insert-in-list-target="items">
-              <p><%= pluralize @event.reviews.size, "review" %><p>
-                <% if @event.reviews.blank? %>
-                  Be the first to leave a review for <%= @event.title %>
+              <p><%= pluralize event.reviews.size, "review" %><p>
+                <% if event.reviews.blank? %>
+                  Be the first to leave a review for <%= event.title %>
                 <% else %>
-                  <% @event.reviews.each do |review| %>
+                  <% event.reviews.each do |review| %>
                     <p><%= review.content %></p>
                   <% end %>
                 <% end %>
             </div>
-            <%= render 'reviews/form', event: @event, review: @review %>
+            <%= render 'reviews/form', event: event, review: @review %>
           </div>
 
-          <p><%= pluralize @event.reviews.size, "review" %><p>
-          <% if @event.reviews.blank? %>
-            Be the first to leave a review for <%= @event.title %>
+          <p><%= pluralize event.reviews.size, "review" %><p>
+          <% if event.reviews.blank? %>
+            Be the first to leave a review for <%= event.title %>
           <% else %>
-            <% @event.reviews.each do |review| %>
+            <% event.reviews.each do |review| %>
               <p><%= review.content %></p>
             <% end %>
           <% end %>
@@ -57,7 +52,7 @@
         <!-- MAPBOX OPEN -->
 
         <div class="ms-3 me-3 p-2">
-          <p style="color: rgba(99, 99, 99, 0.6);font-size: 13px;font-weight: bold;"><%= @event.address %><p>
+          <p style="color: rgba(99, 99, 99, 0.6);font-size: 13px;font-weight: bold;"><%= event.address %><p>
           <div class="card-show__map"
             data-controller="map"
             data-map-markers-value="<%= @markers.to_json %>"
@@ -116,7 +111,7 @@
               <!-- JS COUNTER PARTICIPANTS CLOSE-->
 
               <!-- BUTTON PARTICIPATE OPEN -->
-              <%= link_to event_bookings_path(@event, booking: {nb_guest: "4", user_id: current_user, event_id: @event.id}),data:{ turbo_method: :post}, class:"btn-primary" do %>
+              <%= link_to event_bookings_path(event, booking: {nb_guest: "4", user_id: current_user, event_id: event.id}),data:{ turbo_method: :post}, class:"btn-primary" do %>
                 PARTICIPATE +
               <% end %>
               <!-- BUTTON PARTICIPATE CLOSE -->
