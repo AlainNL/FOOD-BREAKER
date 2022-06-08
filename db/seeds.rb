@@ -19,6 +19,14 @@ Event.destroy_all
 
 puts "Event.destroy_all finish !"
 
+
+puts "User.destroy_all start..."
+
+User.destroy_all
+
+puts "User.destroy_all finish !"
+
+
 sleep(1)
 
 puts "User seed start..."

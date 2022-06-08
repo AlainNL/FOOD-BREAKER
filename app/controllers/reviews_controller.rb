@@ -1,15 +1,15 @@
 class ReviewsController < ApplicationController
   def create
-    @event = Event.find(params[:event_id])
+    @booking = Booking.find(params[:booking_id])
     @review = Review.new(review_params)
-    @review.event = @event
+    @review.booking = @booking
 
     respond_to do |format|
       if @review.save
-        format.html { redirect_to event_path(@event) }
+        format.html { redirect_to events_path }
         format.json
       else
-        format.html { render "events/show", status: :unprocessable_entity }
+        format.html { render "events/index", status: :unprocessable_entity }
         format.json
       end
     end

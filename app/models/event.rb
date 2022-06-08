@@ -7,8 +7,8 @@ class Event < ApplicationRecord
   }
   belongs_to :user
   has_many :bookings
+  has_many :reviews, through: :bookings
   has_many :participants, through: :bookings, source: :user
-  has_many :reviews, dependent: :destroy
   has_one :chatroom, dependent: :destroy
   has_many_attached :photos
 
