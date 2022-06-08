@@ -12,6 +12,11 @@ Booking.destroy_all
 
 puts "Booking.destroy_all finish !"
 
+puts "Chatroom.destroy_all start..."
+
+Chatroom.destroy_all
+
+puts "Chatroom.destroy_all end..."
 
 puts "Event.destroy_all start..."
 
