@@ -8,7 +8,8 @@ export default class extends Controller {
 
     console.log(this.dateTarget)
     flatpickr(this.dateTarget, {
-      allowInput: true
+      allowInput: true,
+      disableMobile: true
     })
   }
 }
