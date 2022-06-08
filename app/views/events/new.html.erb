@@ -1,0 +1,22 @@
+<div class="card mt-3 pb-3">
+  <div class="justify-content-center">
+    <div class="input-group mt-5" style="padding: 0px 16px 0px 16px">
+      <p class="text-sm-start"><strong>Create your event and meet people!</strong></p>
+      <%= simple_form_for @event, html: { data: { controller: 'flatpickr' } } do |f| %>
+
+        <%= f.input :photos, input_html: { class: 'd-none', multiple: true }, label_html: { class: 'upload-photo'}, label: '📷 Upload photos', as: :file %>
+
+        <%= f.input :title, label: 'Event title' %>
+        <%= f.input :address, label: 'Location' %>
+        <%= f.input :description, as: :text, label: 'More about your event' %>
+
+        <%= f.input :category, as: :radio_buttons, input_html: { class: "tag-selector" }, multiple: false, item_wrapper_class: 'tag-item', collection: Event::CATEGORIES, label: false, include_hidden: false %>
+        <%= f.input :language, as: :radio_buttons, input_html: { class: "tag-selector" }, multiple: false, item_wrapper_class: 'tag-item', collection: Event::LANGUAGES, label: false, include_hidden: false %>
+
+        <%= f.input :capacity, label: 'Guests #', as: :integer %>
+        <%= f.input :date, as: :string, input_html: { data: { flatpickr_target: 'date' } } %>
+        <%= f.submit "Register", class: 'btn btn-primary'%>
+      <% end %>
+    </div>
+  </div>
+</div>

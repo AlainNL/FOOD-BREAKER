@@ -1,4 +1,9 @@
 class EventsController < ApplicationController
+
+  def new
+    @event = Event.new
+  end
+
   def index
     # raise
     @events = Event.order("events.date ASC")
@@ -77,11 +82,13 @@ class EventsController < ApplicationController
     #Création de chatroom lié à l'event
     @event = Event.new(event_params)
     @event.user = current_user
+    @event.save
 
     if @event.save
       @chatroom = Chatroom.new
       @chatroom.event = @event
-      redirect_to chatroom_path(@chatroom)
+      @chatroom.save
+      redirect_to event_path(@event)
     else
       render :new, status: :unprocessable_entity
     end
@@ -90,6 +97,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :category, :address, :description, :date, :language, :capacity, :rating, :photos, :query)
+    params.require(:event).permit(:title, :category, :address, :description, :date, :language, :capacity, :rating, photos: [])
   end
 end

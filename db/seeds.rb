@@ -49,7 +49,7 @@ sleep(1)
 
 puts "Event seed start..."
 
-pierreEvent = Event.new(title: "frendly Dinner", category: "Dinner", address: "17 boulevard clemenceau 35000 Rennes", description: "Dinner with friends around French cheeses and wines", date: "12/06/2022", language: "French", capacity: 10, user: pierre)
+pierreEvent = Event.new(title: "Friendly Dinner", category: "Dinner", address: "17 boulevard clemenceau 35000 Rennes", description: "Dinner with friends around French cheeses and wines", date: "12/06/2022", language: "French", capacity: 10, user: pierre)
 pierreEvent.photos.attach(io: URI.open("https://source.unsplash.com/random?food"), filename: "pierreEvent.png", content_type: "image/png")
 pierreEvent.save!
 chatroom1 = Chatroom.new(event: pierreEvent)
@@ -63,7 +63,7 @@ chatroom2 = Chatroom.new(event: pierreEvent2)
 chatroom2.save!
 
 
-pierreEvent3 = Event.new(title: "French pastries tour", category: "Food Tour", address: "17 boulevard Clemenceau 35000 Rennes", description: "Tour to taste a sample of French pastries produced locally.", date: "19/04/2022", language: "French", capacity: 3, user: pierre)
+pierreEvent3 = Event.new(title: "French pastries tour", category: "Food Tour", address: "17 boulevard Clemenceau 35000 Rennes", description: "Tour to taste a sample of French pastries produced locally.", date: "19/04/2022", language: "French", capacity: 3, rating: 2.8, user: pierre)
 pierreEvent3.photos.attach(io: URI.open("https://source.unsplash.com/random?food"), filename: "pierreEvent2.png", content_type: "image/png")
 pierreEvent3.save!
 chatroom3 = Chatroom.new(event: pierreEvent3)
@@ -89,7 +89,7 @@ nicolasEvent2.save!
 chatroom6 = Chatroom.new(event: nicolasEvent2)
 chatroom6.save!
 
-nicolasEvent3 = Event.new(title: "Dinner with friends", category: "Dinner", address: "24, rue des jeuneurs 75002", description: "You will be my special guest! Fond of food, I will be happy to share my favorite receipes", date: "17/01/2022", language: "French", capacity: 4, user: nicolas)
+nicolasEvent3 = Event.new(title: "Dinner with friends", category: "Dinner", address: "24, rue des jeuneurs 75002", description: "You will be my special guest! Fond of food, I will be happy to share my favorite receipes", date: "17/01/2022", language: "French", rating: 4.8, capacity: 4, user: nicolas)
 nicolasEvent3.photos.attach(io: URI.open("https://source.unsplash.com/random?food"), filename: "nicolasEvent.png", content_type: "image/png")
 nicolasEvent3.save!
 
