@@ -1,0 +1,47 @@
+<!-- Modal -->
+<div class="modal fade rounded-bottom" id="modal-<%= event.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body" style="position: relative; flex: 1 1 auto;">
+          <%# MODAL BODY - WRITE CODE DOWNHERE %>
+            <%# IMAGE %>
+          <div class="w-100 image-modal" >
+            <% if event.photos.attached? %>
+              <%= cl_image_tag event.photos.first.key,  height: 250, width: 372, crop: :fill%>
+            <% else %>
+              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg"/>
+            <% end %>
+            <button class="button-back" type="button" data-bs-dismiss="modal" aria-label="Close" style="position: absolute; top: 24px; left: 20px; padding: 12px;"><i class="fa-solid fa-arrow-left position-relative"></i></button>
+          </div>
+
+        <%# CARD SHOW %>
+          <div class="card-show">
+            <div class="d-flex justify-content-between">
+              <h6><%=event.title%></h6>
+              <div style="font-size: 30px;"><%= Event::FLAGS[event.language.to_sym] %></div>
+            </div>
+            <p><%=event.description%></p>
+
+            <div data-controller="insert-in-list" data-insert-in-list-position-value="beforeend">
+              <div data-insert-in-list-target="items">
+                <p><%= pluralize Booking.joins(:reviews).where(event: event).size, "review" %><p>
+                  <% if Booking.joins(:reviews).where(event: event).empty? %>
+                    <%= event.title %>
+                  <% else %>
+                    <% Booking.joins(:reviews).where(event: event).each do |review| %>
+                    <% end %>
+                  <% end %>
+              </div>
+              <% if Booking.find_by(user: current_user, event: event) %>
+                <%= render 'reviews/form', booking: Booking.find_by(user: current_user, event: event), review: Review.new %>
+              <% end %>
+            </div>
+          </div>
+
+        <%# ////////////// FOOTER CLOSE //////////// %>
+          </div>
+        <%# ////////////// MODAL BODY CLOSE //////////// %>
+      </div>
+    </div>
+  </div>
+</div>

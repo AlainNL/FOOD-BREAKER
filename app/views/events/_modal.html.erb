@@ -37,7 +37,7 @@
                 <% end %>
             </div>
             <% if Booking.find_by(user: current_user, event: event) %>
-              <%= render 'reviews/form', booking: Booking.find_by(user: current_user, event: event), review: @review %>
+              <%= render 'reviews/form', booking: Booking.find_by(user: current_user, event: event), review: Review.new %>
             <% end %>
           </div>
         </div>
