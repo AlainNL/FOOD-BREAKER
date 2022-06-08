@@ -38,7 +38,7 @@
           <% if event.bookings.where(confirmation: true).sum(&:nb_guest) == 0 %>
             <p style="color: red">Fully Booked!</p>
           <% else %>
-            <p style="color: #F93C52">👉 <%= pluralize(event.bookings.where(confirmation: true).sum(&:nb_guest),'place')%></p>
+            <p style="color: #F93C52">👉 <%= pluralize(event.capacity - event.bookings.where(confirmation: true).sum(&:nb_guest),'place')%> <%= "availiable".pluralize(event.capacity - event.bookings.where(confirmation: true).sum(&:nb_guest)) %></p>
           <% end %>
         </div>
         <%= render 'modal', event: event %>

@@ -48,7 +48,7 @@
           <p style="color: rgba(99, 99, 99, 0.6);font-size: 13px;font-weight: bold;"><%= event.address %><p>
           <div class="card-show__map"
             data-controller="map"
-            data-map-markers-value="<%= [{lat: event.latitude, lng: event.longitude}].to_json %>"
+            data-map-markers-value="<%= [{lat: event.latitude, lng: event.longitude, image_url: asset_path("map-marker.png")}].to_json %>"
             data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
           </div>
         </div>
@@ -69,7 +69,7 @@
                 <!-- adding button and heading to show the digits -->
                 <!-- increment() and decrement() functions on button click-->
                 <button type="button" class="btn btn-light" style="font-size: 18px; font-weight: bold;" data-action="click->counting#decrement">-</button>
-                <h4 data-counting-target="participant">1</h4>
+                <H4 style="margin-bottom: 0;" data-counting-target="participant">1</H4>
                 <button type="button" class="btn btn-light" style="font-size: 18px; font-weight: bold;" data-action="click->counting#increment">+</button>
             </div>
 
