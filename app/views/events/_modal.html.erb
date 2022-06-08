@@ -55,7 +55,7 @@
           <p style="color: rgba(99, 99, 99, 0.6);font-size: 13px;font-weight: bold;"><%= event.address %><p>
           <div class="card-show__map"
             data-controller="map"
-            data-map-markers-value="<%= @markers.to_json %>"
+            data-map-markers-value="<%= [{lat: event.latitude, lng: event.longitude}].to_json %>"
             data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
           </div>
         </div>
