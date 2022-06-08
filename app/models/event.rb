@@ -12,7 +12,7 @@ class Event < ApplicationRecord
   has_many :bookings
   has_many :reviews, through: :bookings
   has_many :participants, through: :bookings, source: :user
-  has_one :chatroom, dependent: :destroy
+  has_one :chatroom
   has_many_attached :photos
 
   geocoded_by :address
