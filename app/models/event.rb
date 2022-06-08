@@ -5,17 +5,21 @@ class Event < ApplicationRecord
     Spanish: "🇪🇸",
     Portuguese: "🇵🇹"
   }
+  LANGUAGES = ["French", "English", "Spanish", "Portuguese"]
+  CATEGORIES = ["Dinner","Cooking Class", "Food Tour", "Brunch"]
+
   belongs_to :user
   has_many :bookings
+  has_many :reviews, through: :bookings
   has_many :participants, through: :bookings, source: :user
-  has_many :reviews, dependent: :destroy
-  has_one :chatroom, dependent: :destroy
+  has_one :chatroom
   has_many_attached :photos
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
   validates :title, :category, :address, :description, :date, :language, :capacity, presence: true
-  validates :category, inclusion: { in: ["Dinner", "Cooking Class", "Food Tour", "Brunch"] }
-  validates :language, inclusion: { in: ["French", "English", "Spanish", "Portuguese"] }
+  validates :category, inclusion: { in: CATEGORIES  }
+  validates :language, inclusion: { in: LANGUAGES }
+
 end

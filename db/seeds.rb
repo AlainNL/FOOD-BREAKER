@@ -6,18 +6,35 @@ puts "----------Start seed----------"
 puts "------------------------------"
 sleep(1)
 
+puts "Message.destroy_all start..."
+Message.destroy_all
+puts "Message.destroy_all end..."
+
 puts "Booking.destroy_all start..."
 
 Booking.destroy_all
 
 puts "Booking.destroy_all finish !"
 
+puts "Chatroom.destroy_all start..."
+
+Chatroom.destroy_all
+
+puts "Chatroom.destroy_all end..."
 
 puts "Event.destroy_all start..."
 
 Event.destroy_all
 
 puts "Event.destroy_all finish !"
+
+
+puts "User.destroy_all start..."
+
+User.destroy_all
+
+puts "User.destroy_all finish !"
+
 
 sleep(1)
 
@@ -49,24 +66,24 @@ sleep(1)
 
 puts "Event seed start..."
 
-pierreEvent = Event.new(title: "frendly Dinner", category: "Dinner", address: "17 boulevard clemenceau 35000 Rennes", description: "Dinner with friends around French cheeses and wines", date: "12/06/2022", language: "French", capacity: 10, user: pierre)
+pierreEvent = Event.new(title: "Friendly Dinner", category: "Dinner", address: "17 boulevard clemenceau 35000 Rennes", description: "Dinner with friends around French cheeses and wines", date: "12/06/2022", language: "French", capacity: 10, user: pierre)
 pierreEvent.photos.attach(io: URI.open("https://source.unsplash.com/random?food"), filename: "pierreEvent.png", content_type: "image/png")
 pierreEvent.save!
-chatroom1 = Chatroom.new(event: pierreEvent)
+chatroom1 = Chatroom.new(event_id: pierreEvent.id)
 chatroom1.save!
 
 
 pierreEvent2 = Event.new(title: "Brunch on the beach", category: "Brunch", address: "plage du solidor 35400 Saint-Malo", description: "Take a gourmet break with a brunch of Brittany ! We can have a chat before over food as French cheese, French charcuterie, bread, pancakes and cider!!", date: "15/06/2022", language: "English", capacity: 8, user: pierre)
 pierreEvent2.photos.attach(io: URI.open("https://source.unsplash.com/random?food"), filename: "pierreEvent2.png", content_type: "image/png")
 pierreEvent2.save!
-chatroom2 = Chatroom.new(event: pierreEvent2)
+chatroom2 = Chatroom.new(event_id: pierreEvent2.id)
 chatroom2.save!
 
 
-pierreEvent3 = Event.new(title: "French pastries tour", category: "Food Tour", address: "17 boulevard Clemenceau 35000 Rennes", description: "Tour to taste a sample of French pastries produced locally.", date: "19/04/2022", language: "French", capacity: 3, user: pierre)
+pierreEvent3 = Event.new(title: "French pastries tour", category: "Food Tour", address: "17 boulevard Clemenceau 35000 Rennes", description: "Tour to taste a sample of French pastries produced locally.", date: "19/04/2022", language: "French", capacity: 3, rating: 2.8, user: pierre)
 pierreEvent3.photos.attach(io: URI.open("https://source.unsplash.com/random?food"), filename: "pierreEvent2.png", content_type: "image/png")
 pierreEvent3.save!
-chatroom3 = Chatroom.new(event: pierreEvent3)
+chatroom3 = Chatroom.new(event_id: pierreEvent3.id)
 chatroom3.save!
 
 
@@ -74,22 +91,22 @@ sarahEvent = Event.new(title: "Learn Portuguese Food", category: "Cooking Class"
 sarahEvent.photos.attach(io: URI.open("https://source.unsplash.com/random?food"), filename: "sarahEvent.png", content_type: "image/png")
 sarahEvent.save!
 
-chatroom4 = Chatroom.new(event: sarahEvent)
+chatroom4 = Chatroom.new(event_id: sarahEvent.id)
 chatroom4.save!
 
 nicolasEvent = Event.new(title: "Dim Sum Cooking Class", category: "Cooking Class", address: "Tour eiffel", description: "Learn how to make Dim with friends", date: "13/08/2022", language: "French", capacity: 6, user: nicolas)
 nicolasEvent.photos.attach(io: URI.open("https://source.unsplash.com/random?food"), filename: "nicolasEvent.png", content_type: "image/png")
 nicolasEvent.save!
-chatroom5 = Chatroom.new(event: nicolasEvent)
+chatroom5 = Chatroom.new(event_id: nicolasEvent.id)
 chatroom5.save!
 
 nicolasEvent2 = Event.new(title: "Pizza Cooking Class", category: "Cooking Class", address: "66, rue de l'arbre sec 75001 Paris", description: "Learn how to make delicious pizza", date: "27/09/2022", language: "English", capacity: 4, user: nicolas)
 nicolasEvent2.photos.attach(io: URI.open("https://source.unsplash.com/random?food"), filename: "nicolasEvent.png", content_type: "image/png")
 nicolasEvent2.save!
-chatroom6 = Chatroom.new(event: nicolasEvent2)
+chatroom6 = Chatroom.new(event_id: nicolasEvent2.id)
 chatroom6.save!
 
-nicolasEvent3 = Event.new(title: "Dinner with friends", category: "Dinner", address: "24, rue des jeuneurs 75002", description: "You will be my special guest! Fond of food, I will be happy to share my favorite receipes", date: "17/01/2022", language: "French", capacity: 4, user: nicolas)
+nicolasEvent3 = Event.new(title: "Dinner with friends", category: "Dinner", address: "24, rue des jeuneurs 75002", description: "You will be my special guest! Fond of food, I will be happy to share my favorite receipes", date: "17/01/2022", language: "French", rating: 4.8, capacity: 4, user: nicolas)
 nicolasEvent3.photos.attach(io: URI.open("https://source.unsplash.com/random?food"), filename: "nicolasEvent.png", content_type: "image/png")
 nicolasEvent3.save!
 
