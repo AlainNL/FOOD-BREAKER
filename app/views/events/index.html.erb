@@ -20,7 +20,7 @@
           <div class="d-flex justify-content-center mt-4 w-100">
             <%= f.input :categories, as: :check_boxes, input_html: { class: "tag-selector" }, item_wrapper_class: 'tag-item', collection: ["Dinner", "Cooking Class", "Food Tour", "Brunch"], label: false, include_hidden: false, checked: params.dig(:filters, :categories) %>
           </div>
-          <%= f.submit "CHERCHER +", class: "btn-primary" %>
+          <%= f.submit "SEARCH +", class: "btn-primary" %>
         <% end %>
     </div>
     <div class="card-event-little-all">
@@ -39,7 +39,7 @@
           <% if event.bookings.where(confirmation: true).sum(&:nb_guest) == 0 %>
             <p style="color: red">Fully Booked!</p>
           <% else %>
-            <p style="color: #F93C52">👉 <%= pluralize(event.capacity - event.bookings.where(confirmation: true).sum(&:nb_guest),'place')%> <%= "availiable".pluralize(event.capacity - event.bookings.where(confirmation: true).sum(&:nb_guest)) %></p>
+            <p style="color: #F93C52">👉 <%= pluralize(event.capacity - event.bookings.where(confirmation: true).sum(&:nb_guest),'place')%> <%= "available".pluralize(event.capacity - event.bookings.where(confirmation: true).sum(&:nb_guest)) %></p>
           <% end %>
         </div>
         <%= render 'modal', event: event %>
