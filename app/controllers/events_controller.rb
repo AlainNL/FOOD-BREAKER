@@ -5,9 +5,9 @@ class EventsController < ApplicationController
   end
 
   def index
-    # raise
     @events = Event.order("events.date ASC")
     @review = Review.new
+
     if params.dig(:filters, :address).present?
       sql_query = <<~SQL
         events.address ILIKE :query
@@ -16,10 +16,6 @@ class EventsController < ApplicationController
     end
 
     if params.dig(:filters, :language).present?
-      # sql_query = <<~SQL
-      #   events.language ILIKE :query
-      # SQL
-      # @events = Event.where(sql_query, query: "%#{params.dig(:filters, :language)}%").order("events.date ASC")
       @events = @events.where(language: params.dig(:filters, :language))
     end
 
@@ -31,50 +27,8 @@ class EventsController < ApplicationController
       @events = @events.where(category: params.dig(:filters, :categories))
     end
 
-  #   if params[:address].present?
-  #     sql_query = <<~SQL
-  #       events.address ILIKE :query
-  #     SQL
-  #     @events = Event.where(sql_query, query: "%#{params[:address]}%").order("events.date ASC")
-  #     # jointure sur User pour chercher 1 participant
-  #  elsif params[:language].present?
-  #     sql_query = <<~SQL
-  #       events.language ILIKE :query
-  #     SQL
-  #     @events = Event.where(sql_query, query: "%#{params[:language]}%").order("events.date ASC")
-  #   elsif params[:date].present?
-  #     sql_query = <<~SQL
-  #       events.date >= Date.today :query
-  #     SQL
-  #     # A changer pour prendre toutes les dates à partir de la date saisie
-  #     @events = Event.where(sql_query, query: "%#{params[:date]}%").order("events.date ASC")
-  #     # category buttons
-  #   elsif params[:category]
-  #     sql_query = <<~SQL
-  #       events.category >= Date.today :query
-  #     SQL
-  #     # A changer pour prendre toutes les dates à partir de la date saisie
-  #     @events = Event.where(sql_query, query: "%#{params[:date]}%").order("events.date ASC")
-  #   else
-  #     @events = Event.all.order("events.date ASC")
-  #   end
     @event = Event.new
     @booking = Booking.new
-    @event = Event.all
-    #raise
-  end
-
-       # events.date ILIKE :query
-
-  def show
-    @event = Event.find(params[:id])
-    @review = Review.new
-    @markers = [
-      {
-        lat: @event.latitude,
-        lng: @event.longitude
-      }
-    ]
   end
 
   def create

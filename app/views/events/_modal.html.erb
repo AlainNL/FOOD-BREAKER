@@ -48,7 +48,7 @@
           <p style="color: rgba(99, 99, 99, 0.6);font-size: 13px;font-weight: bold;"><%= event.address %><p>
           <div class="card-show__map"
             data-controller="map"
-            data-map-markers-value="<%= @markers.to_json %>"
+            data-map-markers-value="<%= [{lat: event.latitude, lng: event.longitude}].to_json %>"
             data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
           </div>
         </div>
@@ -65,42 +65,14 @@
 
             <!-- JS COUNTER PARTICIPANTS OPEN-->
 
-            <div class="container-counter">
+            <div class="container-counter" data-controller="counting">
                 <!-- adding button and heading to show the digits -->
                 <!-- increment() and decrement() functions on button click-->
-                <button type="button" class="btn btn-light" style="font-size: 18px; font-weight: bold;" onclick="decrement()">-</button>
-                <h4 id="counting"></h4>
-                <button type="button" class="btn btn-light" style="font-size: 18px; font-weight: bold;" onclick="increment()">+</button>
+                <button type="button" class="btn btn-light" style="font-size: 18px; font-weight: bold;" data-action="click->counting#decrement">-</button>
+                <h4 data-counting-target="participant">1</h4>
+                <button type="button" class="btn btn-light" style="font-size: 18px; font-weight: bold;" data-action="click->counting#increment">+</button>
             </div>
-            <!-- JavaScript code-->
-            <script>
-                //initialising a variable name data
-                var data = 1;
 
-                //printing default value of data that is 0 in h2 tag
-                document.getElementById("counting").innerText = data;
-
-                //check if data > 0
-                function testNum(data) {
-                  if (data = 1) {
-                     return 1;
-                  } else {
-                    data - 1;
-                  }
-                  return data;
-                }
-
-                //creation of increment function
-                function increment() {
-                  data = data + 1;
-                    document.getElementById("counting").innerText = data;
-                }
-                //creation of decrement function
-                function decrement() {
-                  data = testNum(data);
-                    document.getElementById("counting").innerText = data;
-                }
-            </script>
               <!-- JS COUNTER PARTICIPANTS CLOSE-->
 
               <!-- BUTTON PARTICIPATE OPEN -->

@@ -7,6 +7,9 @@ import { application } from "./application"
 import ChatroomSubscriptionController from "./chatroom_subscription_controller.js"
 application.register("chatroom-subscription", ChatroomSubscriptionController)
 
+import CountingController from "./counting_controller.js"
+application.register("counting", CountingController)
+
 import FlatpickrController from "./flatpickr_controller.js"
 application.register("flatpickr", FlatpickrController)
 
