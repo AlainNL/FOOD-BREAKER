@@ -6,6 +6,10 @@ puts "----------Start seed----------"
 puts "------------------------------"
 sleep(1)
 
+puts "Message.destroy_all start..."
+Message.destroy_all
+puts "Message.destroy_all end..."
+
 puts "Booking.destroy_all start..."
 
 Booking.destroy_all
