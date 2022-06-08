@@ -36,12 +36,6 @@
   top: -44px;
 }
 
-// .card-event-infos .card-event-user {
-//   right: 16px;
-//   top: -20px;
-//   width: 40px;
-// }
-
 .card-event-infos__avatar {
   position: relative;
   margin-right: 12px;
@@ -54,24 +48,8 @@
 
 .card-event-infos__title_dash {
   position: absolute;
- //right: 110px;
   top: 77px;
   display: flex;
   width: 75%;
   justify-content: space-between;
 }
-
-// .card-event-infos__participants {
-//   display: flex;
-//   align-items: end;
-//   flex-shrink: 0;
-//   > div {
-//     display: flex;
-//     flex-direction: row-reverse;
-//     justify-content: flex-end;
-//     padding-right: 20px;
-//   }
-//   img {
-//     margin-right: -0.9rem;
-//   }
-// }
