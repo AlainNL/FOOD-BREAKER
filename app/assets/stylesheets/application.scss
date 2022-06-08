@@ -22,12 +22,23 @@ a {
   }
 }
 
-.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
-  color: #FA3C53;
-  font-weight: bold;
-  border: 1;
-}
+//.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+//  color: #FA3C53;
+//  font-weight: bold;
+//  border: 1;
+//}
 
 .nav-link{
   transition: none;
+}
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+  color: #F8F8F8;
+  font-weight: bold;
+}
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+  color: #F8F8F8;
+  background-color: #FA3C53;
+  border-color: #dee2e6 #dee2e6 #F8F8F8;
 }
