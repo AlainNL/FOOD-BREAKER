@@ -25,7 +25,7 @@
     </div>
     <div class="card-event-little-all">
       <% @events.each do |event| %>
-        <div type="button" class="card-event-little mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <div type="button" class="card-event-little mb-4" data-bs-toggle="modal" data-bs-target="#modal<%= event.id %>">
           <% if event.photos.attached? %>
             <%= cl_image_tag event.photos.first.key, height: 100, width: 200, crop: :fill %>
           <% else %>
