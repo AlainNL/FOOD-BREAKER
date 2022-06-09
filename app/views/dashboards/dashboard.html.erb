@@ -30,7 +30,7 @@
       Past events</button>
     </li>
   </ul>
-  
+
   <div class="tab-content" id="myTabContent"
     <div class="tab-pane fade active show" id="future" role="tabpanel" aria-labelledby="future-tab" >
       <% @myevents.where("date >= ?", Time.now).each do |e| %>
@@ -71,7 +71,7 @@
         </div>
         <%= render "dashboards/modal", event: e %>
       <% end %>
-      <%  %>
+
       <% @my_futur_bookings.each do |e| %>
         <div class="card-event" data-bs-toggle="modal" data-bs-target="#modal-<%= e.id %>">
           <% if e.photos.attached? %>
@@ -107,9 +107,7 @@
             </div>
           </div>
         </div>
-
         <%= render 'dashboards/modal', event: e %>
-
       <% end %>
     </div>
 
@@ -152,8 +150,9 @@
           <i class="btn btn-primary">Share your experience </i>
         </div>
         <%= render 'dashboards/modalpastevent', event: e %>
-      </div>
-    <% end %>     
+      <% end %>
+    </div>
+
       <% %>
       <% @my_past_bookings.each do |e| %>
         <div class="card-event">
