@@ -30,12 +30,12 @@
       Past events</button>
     </li>
   </ul>
-
-  <div class="tab-content" id="myTabContent">
-
+  
+  <div class="tab-content" id="myTabContent"
     <div class="tab-pane fade active show" id="future" role="tabpanel" aria-labelledby="future-tab" >
       <% @myevents.where("date >= ?", Time.now).each do |e| %>
-        <div class="card-event">
+
+        <div class="card-event" data-bs-toggle="modal" data-bs-target="#modal-<%= e.id %>" >
           <% if e.photos.attached? %>
             <%= cl_image_tag e.photos.first.key%>
           <% else %>
@@ -48,7 +48,6 @@
               <% else %>
                 <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="avatar"/>
               <% end %>
-
             </div>
             <div class="card-event-infos__title_dash">
               <div>
@@ -70,10 +69,11 @@
             </div>
           </div>
         </div>
+        <%= render "dashboards/modal", event: e %>
       <% end %>
       <%  %>
       <% @my_futur_bookings.each do |e| %>
-        <div class="card-event">
+        <div class="card-event" data-bs-toggle="modal" data-bs-target="#modal-<%= e.id %>">
           <% if e.photos.attached? %>
             <%= cl_image_tag e.photos.first.key%>
           <% else %>
@@ -107,12 +107,15 @@
             </div>
           </div>
         </div>
+
+        <%= render 'dashboards/modal', event: e %>
+
       <% end %>
     </div>
 
     <div class="tab-pane fade" id="past" role="tabpanel" aria-labelledby="past-tab">
       <% @myevents.where("date < ?", Time.now).each do |e| %>
-        <div class="card-event">
+        <div class="card-event" data-bs-toggle="modal" data-bs-target="#modal-<%= e.id %>">
           <% if e.photos.attached? %>
             <%= cl_image_tag e.photos.first.key%>
           <% else %>
@@ -145,8 +148,12 @@
               </div>
             </div>
           </div>
+        <div type="button" class="card-share" data-bs-toggle="modal" data-bs-target="#modal-<%= e.id %>">
+          <i class="btn btn-primary">Share your experience </i>
         </div>
-      <% end %>
+        <%= render 'dashboards/modalpastevent', event: e %>
+      </div>
+    <% end %>     
       <% %>
       <% @my_past_bookings.each do |e| %>
         <div class="card-event">
@@ -182,12 +189,12 @@
               </div>
             </div>
           </div>
-          <%# <%= link_to edit_user_registration_path do %>
-          <%# <i class="btn btn-primary">Share your experience</i>
-          <% end %>
+            <div class="card-share" data-bs-toggle="modal" data-bs-target="#modal-<%= e.id %>">
+            <i class="btn btn-primary">Share your experience </i>
+            <%= render 'dashboards/modalpastevent', event: e %>
+            </div>
         </div>
       <% end %>
     </div>
-
   </div>
 </div>
