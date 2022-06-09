@@ -71,13 +71,6 @@ chatroom2 = Chatroom.new(event_id: pierreEvent2.id)
 chatroom2.save!
 
 
-pierreEvent3 = Event.new(title: "French pastries tour", category: "Food Tour", address: "rue du Bac 75007 Paris", description: "Tour to taste a sample of French pastries produced locally. The tour starts near the Bon Marche. You'll visit famous patisseries such as Pierre Herme or Philippe Conticini", date: "08/06/2022", language: "French", capacity: 3, rating: 2.8, user: pierre)
-pierreEvent3.photos.attach(io: URI.open("https://images.unsplash.com/photo-1609590981063-d495e2914ce4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGFzdHJpZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"), filename: "pierreEvent3.png", content_type: "image/png")
-pierreEvent3.save!
-chatroom3 = Chatroom.new(event_id: pierreEvent3.id)
-chatroom3.save!
-
-
 sarahEvent = Event.new(title: "Learn Portuguese Food", category: "Cooking Class", address: "35 avenue kleber 75016 Paris", description: "Portuguese food, songs and fun! One of my passion is to cook and have friends around my table for a good conversation, great food and delicious wine. Come and enjoy a typical Portuguese dinner with me", date: "09/06/2022", language: "Portuguese", capacity: 4, rating: 4.2, user: sarah)
 sarahEvent.photos.attach(io: URI.open("https://images.unsplash.com/photo-1582957736192-2597df8acc99?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHBvcnR1Z2FsJTIwZm9vZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"), filename: "sarahEvent.png", content_type: "image/png")
 sarahEvent.photos.attach(io: URI.open("https://images.unsplash.com/photo-1652387411197-2b0e2a92a764?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bGlzYm9uJTIwZm9vZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"), filename: "sarahEventbis.png", content_type: "image/png")
@@ -93,6 +86,12 @@ sarahEvent2.save!
 
 chatroom4bis = Chatroom.new(event_id: sarahEvent.id)
 chatroom4bis.save!
+
+sarahEvent3 = Event.new(title: "French pastries tour", category: "Food Tour", address: "rue du Bac 75007 Paris", description: "Tour to taste a sample of French pastries produced locally. The tour starts near the Bon Marche. You'll visit famous patisseries such as Pierre Herme or Philippe Conticini", date: "08/06/2022", language: "French", capacity: 4, rating: 2.8, user: sarah)
+sarahEvent3.photos.attach(io: URI.open("https://images.unsplash.com/photo-1609590981063-d495e2914ce4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGFzdHJpZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"), filename: "sarahEvent3.png", content_type: "image/png")
+sarahEvent3.save!
+chatroom3 = Chatroom.new(event_id: sarahEvent3.id)
+chatroom3.save!
 
 nicolasEvent = Event.new(title: "Dim Sum Cooking Class", category: "Cooking Class", address: "Tour eiffel", description: "Learn how to make Dim with friends: prawn dumplings (Har Gow), Siu Mai (open, steamed pork & prawn dumplings), Gyoza and Jiao Zi", date: "10/06/2022", language: "French", capacity: 6, user: nicolas)
 nicolasEvent.photos.attach(io: URI.open("https://images.unsplash.com/photo-1503764654157-72d979d9af2f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1174&q=80"), filename: "nicolasEvent.png", content_type: "image/png")
@@ -130,6 +129,30 @@ julietteEvent3.save!
 chatroom10 = Chatroom.new(event_id: julietteEvent3.id)
 chatroom10.save!
 
+louisEvent = Event.new(title: "Winter raclette!", category: "Dinner", address: "60 rue de paradis 75010 Paris", description: "This dinner is an interactive and traditional French meal where raclette cheese is melted on a grill and served alongside crispy potatoes, charcuterie and vegetables. This is a cultural experience you won't want to miss! This is a typical meal from the French Alps", date: "15/06/2022", language: "French", capacity: 6, user: louis)
+louisEvent.photos.attach(io: URI.open("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWwLVBoXp2jTYPoHRcs4BBkx9CXviZNIU_5Q&usqp=CAU"), filename: "louisEvent.png", content_type: "image/png")
+louisEvent.save!
+chatroom11 = Chatroom.new(event_id: louisEvent.id)
+chatroom11.save!
+
+louisEvent2 = Event.new(title: "Flavour of Mexico in Paris", category: "Dinner", address: "60 rue de paradis 75010 Paris", description: "Get a taste of authentic Mexican cuisine without leaving the heart of Paris! Discover the culinary delights of Yucatan, a rich and diverse state in Mexico, at this amazing dinner I will prepare with a Michelin-trained Mexican chef", date: "16/06/2022", language: "French", capacity: 6, user: louis)
+louisEvent2.photos.attach(io: URI.open("https://images.unsplash.com/photo-1504544750208-dc0358e63f7f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8bWV4aWNhbiUyMGZvb2R8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"), filename: "louisEvent2.png", content_type: "image/png")
+louisEvent2.save!
+chatroom12 = Chatroom.new(event_id: louisEvent2.id)
+chatroom12.save!
+
+louisEvent3 = Event.new(title: "Amazing French Brunch in Paris", category: "Brunch", address: "Café Marly Paris", description: "Looking for the best brunch in Paris? If so then this brunch is definitely for you! The food I select is just wicked awesome and I propose features entrees like scrambled eggs on freshly toasted brioche bread, multi-grain pancakes with fresh fruit, and so much more.", date: "17/06/2022", language: "French", capacity: 10, user: louis)
+louisEvent3.photos.attach(io: URI.open("https://images.unsplash.com/photo-1614287681681-592fe09d78a2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80"), filename: "louisEvent3.png", content_type: "image/png")
+louisEvent3.save!
+chatroom12 = Chatroom.new(event_id: louisEvent3.id)
+chatroom12.save!
+
+louisEvent4 = Event.new(title: "Macarons master class on the Ile Saint-Louis", category: "Cooking Class", address: "4, rue Saint-Louis-en-l’Île 75004 Paris", description: "If the idea of cooking takes your fancy, consider a course in the art of macaron making. Over 3 hours in a private apartment on the Île Saint-Louis, you’ll learn how to create the kind of double-decker macarons first made by the Maison Ladurée in 1930. Possible flavors include chocolate, lemon, raspberry and coffee", date: "18/06/2022", language: "English", capacity: 8, user: louis)
+louisEvent4.photos.attach(io: URI.open("https://images.unsplash.com/photo-1634118520179-0c78b72df69a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bWFjYXJvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"), filename: "louisEvent4.png", content_type: "image/png")
+louisEvent4.save!
+chatroom13 = Chatroom.new(event_id: louisEvent4.id)
+chatroom13.save!
+
 puts "Event seed finish !"
 
 sleep(1)
@@ -138,11 +161,16 @@ puts "Booking seed start..."
 
 Booking.create(nb_guest: "2", confirmation: true, user_id: sarah.id, event_id: pierreEvent.id )
 Booking.create(nb_guest: "3", confirmation: true, user_id: nicolas.id, event_id: pierreEvent.id )
+Booking.create(nb_guest: "1", confirmation: true, user_id: juliette.id, event_id: pierreEvent.id )
 Booking.create(nb_guest: "1", confirmation: true, user_id: louis.id, event_id: pierreEvent2.id )
+Booking.create(nb_guest: "1", confirmation: true, user_id: pierre.id, event_id: sarahEvent.id )
 Booking.create(nb_guest: "1", confirmation: true, user_id: juliette.id, event_id: sarahEvent.id )
-Booking.create(nb_guest: "1", confirmation: true, user_id: juliette.id, event_id: pierreEvent3.id )
+Booking.create(nb_guest: "1", confirmation: true, user_id: juliette.id, event_id: sarahEvent3.id )
 Booking.create(nb_guest: "1", confirmation: true, user_id: pierre.id, event_id: nicolasEvent2.id )
 Booking.create(nb_guest: "1", confirmation: true, user_id: pierre.id, event_id: nicolasEvent3.id )
+Booking.create(nb_guest: "1", confirmation: true, user_id: pierre.id, event_id: louisEvent3.id )
+Booking.create(nb_guest: "1", confirmation: true, user_id: pierre.id, event_id: sarahEvent3.id )
+Booking.create(nb_guest: "1", confirmation: true, user_id: sarah.id, event_id: louisEvent.id )
 
 puts "Booking seed finish..."
 
