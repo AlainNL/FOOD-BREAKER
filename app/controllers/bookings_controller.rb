@@ -28,4 +28,5 @@ class BookingsController < ApplicationController
   def booking_params
     params.require(:booking).permit(:nb_guest, :user_id, :event_id)
   end
+
 end

@@ -3,6 +3,7 @@ class ReviewsController < ApplicationController
     @booking = Booking.find(params[:booking_id])
     @review = Review.new(review_params)
     @review.booking = @booking
+    @event = @booking.event
 
     respond_to do |format|
       if @review.save
@@ -13,6 +14,7 @@ class ReviewsController < ApplicationController
         format.json
       end
     end
+    @event.rating = Booking.joins(:reviews).where(event: @event).average(:rate)
   end
 
 private
