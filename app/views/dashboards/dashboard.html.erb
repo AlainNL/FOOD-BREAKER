@@ -151,7 +151,6 @@
           <i class="btn btn-primary">Share your experience </i>
         </div>
         <%= render 'dashboards/modalpastevent', event: e %>
-    </div>
       <% end %>
       <% @my_past_bookings.each do |e| %>
         <div class="card-event" style="height: 320px;">
@@ -187,10 +186,12 @@
               </div>
             </div>
           </div>
-            <div class="card-share" data-bs-toggle="modal" data-bs-target="#modal-<%= e.id %>">
+
+          <div type="button" class="card-share" data-bs-toggle="modal" data-bs-target="#modal-<%= e.id %>">
             <i class="btn btn-primary">Share your experience </i>
-            <%= render 'dashboards/modalpastevent', event: e %>
-            </div>
+          </div>
+          <%= render 'dashboards/modalpastevent', event: e %>
+
         </div>
       <% end %>
     </div>
