@@ -14,7 +14,6 @@
           <%= link_to edit_user_registration_path do %>
             <i class="fa-solid fa-pen-to-square pin-form"></i>
           <% end %>
-          <%# <p class="card-text"><small class="text-muted"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></small></p> %>
 
         <% for i in (1..5) do %>
           <% if i > @myevents.average(:rating) %>
@@ -153,9 +152,9 @@
               </div>
             </div>
           </div>
-        <div type="button" class="card-share" data-bs-toggle="modal" data-bs-target="#modal-<%= e.id %>">
-          <i class="btn btn-primary">Share your experience </i>
-        </div>
+          <div class="btn-foodbreaker-container">
+            <button class="card-share btn-foodbreaker" data-bs-toggle="modal"   data-bs-target="#modal-<%= e.id %>"> LEAVE A REVIEW +</button>
+          </div>
         <%= render 'dashboards/modalpastevent', event: e %>
       <% end %>
       <% @my_past_bookings.each do |e| %>
@@ -193,8 +192,8 @@
             </div>
           </div>
 
-          <div type="button" class="card-share" data-bs-toggle="modal" data-bs-target="#modal-<%= e.id %>">
-            <i class="btn btn-primary">Share your experience </i>
+          <div class="btn-foodbreaker-container">
+            <button class="card-share btn-foodbreaker" data-bs-toggle="modal"   data-bs-target="#modal-<%= e.id %>"> LEAVE A REVIEW +</button>
           </div>
           <%= render 'dashboards/modalpastevent', event: e %>
 

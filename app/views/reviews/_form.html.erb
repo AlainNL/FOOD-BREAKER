@@ -6,5 +6,10 @@
                     }) do |f| %>
   <%= f.input :rate, collection: (1..5).to_a, label: "Rate your experience" %>
   <%= f.input :content, as: :text, label: "Let some comments" %>
-  <%= f.button :submit %>
+              <%# # input_html: { class: 'bg-danger' } %>
+  <%= f.submit "ADD REVIEW +", class: "btn-foodbreaker" %>
 <% end %>
+<%#
+ input_html: { class: 'bg-danger' }
+ label_html: { class: 'bg-danger' }
+ wrapper_html: { class: 'bg-danger' } %>

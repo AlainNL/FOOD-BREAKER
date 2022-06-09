@@ -1,7 +1,8 @@
-.btn-primary {
+.btn-foodbreaker {
   border: 0;
   border-radius: 6px;
   color: white;
+  background-color: $food-pink;
   font-weight: bold;
   font-size: 12px;
   position: relative;
@@ -9,7 +10,16 @@
   width: 100%;
 }
 
-.btn-primary:hover {
+.btn-foodbreaker:hover {
   background-color: $food-pink;
   color: white;
+}
+
+button.btn-foodbreaker {
+  width: 80%;
+}
+
+.btn-foodbreaker-container {
+  display: flex;
+  justify-content: center;
 }
