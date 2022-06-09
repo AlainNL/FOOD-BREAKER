@@ -9,8 +9,10 @@
 
   .btn-primary {
     position: relative;
-    right: -12px;
-    padding: 7px 9px 12px 8px;
+    right: -6px;
+    padding: 7px 9px 8px 8px;
+    width: auto;
+    top: 4px;
   }
 
   h1 {
@@ -35,6 +37,7 @@
 
     .form-control {
       margin: 0px 0px;
+      width: 266px;
     }
   }
 }
