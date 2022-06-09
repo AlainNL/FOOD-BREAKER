@@ -21,10 +21,15 @@
               <div style="font-size: 30px;"><%= Event::FLAGS[event.language.to_sym] %></div>
             </div>
             <p><%=event.description%></p>
-            <%# <% link_to "Messages", chatroom_path(event.chatroom), class: "btn btn-foodbreaker" %>
 
-          <%# ////////////// FOOTER CLOSE //////////// %>
+
+            <div class="btn-foodbreaker-container">
+            <button class="btn-foodbreaker">
+            <%= link_to "MESSAGES +", chatroom_path(event.chatroom), class: "btn-foodbreaker" %></button>
             </div>
+
+          </div>
+          <%# ////////////// FOOTER CLOSE //////////// %>
           <%# ////////////// MODAL BODY CLOSE //////////// %>
         </div>
       </div>
