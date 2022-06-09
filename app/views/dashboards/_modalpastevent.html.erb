@@ -22,11 +22,16 @@
             </div>
             <p><%=event.description%></p>
 
+          <div class="reviews">
+            <% event.reviews.each do |r| %>
+            <%= render "events/review", review: r %>
+            <%end%>
+          </div>
+
             <div data-controller="insert-in-list" data-insert-in-list-position-value="beforeend">
               <div data-insert-in-list-target="items">
                 <p><%= pluralize Booking.joins(:reviews).where(event: event).size, "review" %><p>
                   <% if Booking.joins(:reviews).where(event: event).empty? %>
-                    <%= event.title %>
                   <% else %>
                     <% Booking.joins(:reviews).where(event: event).each do |review| %>
                     <% end %>
