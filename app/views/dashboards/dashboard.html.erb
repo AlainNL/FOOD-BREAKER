@@ -1,193 +1,197 @@
-<div class="p-2">
-  <div class="card mb-2 mt-3">
-    <div class="row align-items-center">
-      <div class="col-4">
-        <% if @user.photo.attached? %>
-          <%= cl_image_tag @user.photo.key, class: "avatar-large rounded mx-auto d-block" %>
-        <% else %>
-          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="avatar-large"/>
+<div class="card mb-2 mt-3">
+  <div class="row align-items-center">
+    <div class="col-4">
+      <% if @user.photo.attached? %>
+        <%= cl_image_tag @user.photo.key, class: "avatar-large rounded mx-auto d-block" %>
+      <% else %>
+        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="avatar-large"/>
+      <% end %>
+    </div>
+    <div class="col-6 flex-fill">
+      <div class="card-body">
+        <h5 class="card-title"><%= @user.first_name.capitalize%> <%= @user.last_name.capitalize%></h5>
+        <%= link_to edit_user_registration_path do %>
+          <i class="fa-solid fa-pen-to-square pin-form"></i>
         <% end %>
-      </div>
-      <div class="col-6 flex-fill">
-        <div class="card-body">
-          <h5 class="card-title"><%= @user.first_name.capitalize%> <%= @user.last_name.capitalize%></h5>
-          <%= link_to edit_user_registration_path do %>
-            <i class="fa-solid fa-pen-to-square pin-form"></i>
-          <% end %>
-          <p class="card-text"><small class="text-muted"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></small></p>
-        </div>
+        <p class="card-text"><small class="text-muted"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></small></p>
       </div>
     </div>
   </div>
+</div>
 
-  <ul class="nav nav-tabs" id="myTab" role="tablist">
-    <li class="nav-item" role="presentation">
-      <button class="nav-link active" id="future-tab" data-bs-toggle="tab" data-bs-target="#future" type="button" role="tab" aria-controls="future" aria-selected="true"><i class="fa-regular fa-face-smile-beam"></i>
-      Coming events </button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="past-tab" data-bs-toggle="tab" data-bs-target="#past" type="button" role="tab" aria-controls="past" aria-selected="false"><i class="fa-solid fa-people-group"></i>
-      Past events</button>
-    </li>
-  </ul>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="future-tab" data-bs-toggle="tab" data-bs-target="#future" type="button" role="tab" aria-controls="future" aria-selected="true"><i class="fa-regular fa-clock"></i>
+    Coming events </button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="past-tab" data-bs-toggle="tab" data-bs-target="#past" type="button" role="tab" aria-controls="past" aria-selected="false"><i class="fa-regular fa-square-check"></i>
+    Past events</button>
+  </li>
+</ul>
 
-  <div class="tab-content" id="myTabContent">
+<div class="tab-content" id="myTabContent">
 
-    <div class="tab-pane fade active show" id="future" role="tabpanel" aria-labelledby="future-tab" >
-      <% @myevents.where("date >= ?", Time.now).each do |e| %>
-        <div class="card-event">
-          <% if e.photos.attached? %>
-            <%= cl_image_tag e.photos.first.key%>
-          <% else %>
-            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg"/>
-          <% end %>
-          <div class="card-event-infos">
-            <div class="card-event-infos__avatar">
-              <% if e.user.photo.attached? %>
-                <%= cl_image_tag e.user.photo.key, class: "avatar"%>
-              <% else %>
-                <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="avatar"/>
-              <% end %>
-
+  <div class="tab-pane fade active show" id="future" role="tabpanel" aria-labelledby="future-tab" >
+    <% @myevents.where("date >= ?", Time.now).each do |e| %>
+      <div class="card-event" data-bs-toggle="modal" data-bs-target="#modal-<%= e.id %>" >
+        <% if e.photos.attached? %>
+          <%= cl_image_tag e.photos.first.key%>
+        <% else %>
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg"/>
+        <% end %>
+        <div class="card-event-infos">
+          <div class="card-event-infos__avatar">
+            <% if e.user.photo.attached? %>
+              <%= cl_image_tag e.user.photo.key, class: "avatar"%>
+            <% else %>
+              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="avatar"/>
+            <% end %>
+          </div>
+          <div class="card-event-infos__title_dash">
+            <div>
+              <h2><%= e.title.capitalize %></h2>
+              <p><%= e.date.strftime('%d/%m/%Y') %></p>
             </div>
-            <div class="card-event-infos__title_dash">
-              <div>
-                <h2><%= e.title.capitalize %></h2>
-                <p><%= e.date.strftime('%d %b %Y') %></p>
-              </div>
-              <p class="flag"><%= Event::FLAGS[e.language.to_sym] %> </p>
-            </div>
-            <div style="card-event-infos__participants">
-              <div>
-                <% e.bookings.where(confirmation: true).each do|b| %>
-                  <% if b.user.photo.attached? %>
-                    <%= cl_image_tag b.user.photo.key, class: "card-event-user avatar"%>
-                  <% else %>
-                    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-event-user avatar"/>
-                  <% end %>
-                <%end%>
-              </div>
+            <p class="flag"><%= Event::FLAGS[e.language.to_sym] %> </p>
+          </div>
+          <div style="card-event-infos__participants">
+            <div>
+              <% e.bookings.where(confirmation: true).each do|b| %>
+                <% if b.user.photo.attached? %>
+                  <%= cl_image_tag b.user.photo.key, class: "card-event-user avatar"%>
+                <% else %>
+                  <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-event-user avatar"/>
+                <% end %>
+              <%end%>
             </div>
           </div>
         </div>
-      <% end %>
-      <%  %>
-      <% @my_futur_bookings.each do |e| %>
-        <div class="card-event">
-          <% if e.photos.attached? %>
-            <%= cl_image_tag e.photos.first.key%>
-          <% else %>
-            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg"/>
-          <% end %>
-          <div class="card-event-infos">
-            <div class="card-event-infos__avatar">
-              <% if e.user.photo.attached? %>
-                <%= cl_image_tag e.user.photo.key, class: "avatar"%>
-              <% else %>
-                <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="avatar"/>
-              <% end %>
+      </div>
+      <%= render "dashboards/modal", event: e %>
+    <% end %>
+    <%  %>
+    <% @my_futur_bookings.each do |e| %>
+      <div class="card-event" data-bs-toggle="modal" data-bs-target="#modal-<%= e.id %>">
+        <% if e.photos.attached? %>
+          <%= cl_image_tag e.photos.first.key%>
+        <% else %>
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg"/>
+        <% end %>
+        <div class="card-event-infos">
+          <div class="card-event-infos__avatar">
+            <% if e.user.photo.attached? %>
+              <%= cl_image_tag e.user.photo.key, class: "avatar"%>
+            <% else %>
+              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="avatar"/>
+            <% end %>
+          </div>
+          <div class="card-event-infos__title_dash">
+            <div>
+              <h2><%= e.title.capitalize %></h2>
+              <p><%= e.date.strftime('%d/%m/%Y') %></p>
             </div>
-            <div class="card-event-infos__title_dash">
-              <div>
-                <h2><%= e.title.capitalize %></h2>
-                <p><%= e.date.strftime('%d %b %Y') %></p>
-              </div>
-              <p class="flag"><%= Event::FLAGS[e.language.to_sym] %> </p>
-            </div>
-            <div style="card-event-infos__participants">
-              <div>
-                <% e.bookings.where(confirmation: true).each do|b| %>
-                  <% if b.user.photo.attached? %>
-                    <%= cl_image_tag b.user.photo.key, class: "card-event-user avatar"%>
-                  <% else %>
-                    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-event-user avatar"/>
-                  <% end %>
-                <%end%>
-              </div>
+            <p class="flag"><%= Event::FLAGS[e.language.to_sym] %> </p>
+          </div>
+          <div style="card-event-infos__participants">
+            <div>
+              <% e.bookings.where(confirmation: true).each do|b| %>
+                <% if b.user.photo.attached? %>
+                  <%= cl_image_tag b.user.photo.key, class: "card-event-user avatar"%>
+                <% else %>
+                  <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-event-user avatar"/>
+                <% end %>
+              <%end%>
             </div>
           </div>
         </div>
-      <% end %>
+      </div>
+      <%= render 'dashboards/modal', event: e %>
+    <% end %>
+  </div>
+
+  <div class="tab-pane fade" id="past" role="tabpanel" aria-labelledby="past-tab">
+    <% @myevents.where("date < ?", Time.now).each do |e| %>
+      <div class="card-event" data-bs-toggle="modal" data-bs-target="#modal-<%= e.id %>">
+        <% if e.photos.attached? %>
+          <%= cl_image_tag e.photos.first.key%>
+        <% else %>
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg"/>
+        <% end %>
+        <div class="card-event-infos">
+          <div class="card-event-infos__avatar">
+            <% if e.user.photo.attached? %>
+              <%= cl_image_tag e.user.photo.key, class: "avatar"%>
+            <% else %>
+              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="avatar"/>
+            <% end %>
+          </div>
+          <div class="card-event-infos__title_dash">
+            <div>
+              <h2><%= e.title.capitalize %></h2>
+              <p><%= e.date.strftime('%d/%m/%Y') %></p>
+            </div>
+            <p class="flag"><%= Event::FLAGS[e.language.to_sym] %> </p>
+          </div>
+          <div style="card-event-infos__participants">
+            <div>
+              <% e.bookings.where(confirmation: true).each do|b| %>
+                <% if b.user.photo.attached? %>
+                  <%= cl_image_tag b.user.photo.key, class: "card-event-user avatar"%>
+                <% else %>
+                  <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-event-user avatar"/>
+                <% end %>
+              <%end%>
+            </div>
+          </div>
+        </div>
+      <div type="button" class="card-share" data-bs-toggle="modal" data-bs-target="#modal-<%= e.id %>">
+        <i class="btn btn-primary">Share your experience </i>
+      </div>
+      <%= render 'dashboards/modalpastevent', event: e %>
+
     </div>
-
-    <div class="tab-pane fade" id="past" role="tabpanel" aria-labelledby="past-tab">
-      <% @myevents.where("date < ?", Time.now).each do |e| %>
-        <div class="card-event">
-          <% if e.photos.attached? %>
-            <%= cl_image_tag e.photos.first.key%>
-          <% else %>
-            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg"/>
-          <% end %>
-          <div class="card-event-infos">
-            <div class="card-event-infos__avatar">
-              <% if e.user.photo.attached? %>
-                <%= cl_image_tag e.user.photo.key, class: "avatar"%>
-              <% else %>
-                <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="avatar"/>
-              <% end %>
+  <% end %>
+    <% %>
+    <% @my_past_bookings.each do |e| %>
+      <div class="card-event">
+        <% if e.photos.attached? %>
+          <%= cl_image_tag e.photos.first.key%>
+        <% else %>
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg"/>
+        <% end %>
+        <div class="card-event-infos">
+          <div class="card-event-infos__avatar">
+            <% if e.user.photo.attached? %>
+              <%= cl_image_tag e.user.photo.key, class: "avatar"%>
+            <% else %>
+              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="avatar"/>
+            <% end %>
+          </div>
+          <div class="card-event-infos__title_dash">
+            <div>
+              <h2><%= e.title.capitalize %></h2>
+              <p><%= e.date.strftime('%d/%m/%Y') %></p>
             </div>
-            <div class="card-event-infos__title_dash">
-              <div>
-                <h2><%= e.title.capitalize %></h2>
-                <p><%= e.date.strftime('%d %b %Y') %></p>
-              </div>
-              <p class="flag"><%= Event::FLAGS[e.language.to_sym] %> </p>
-            </div>
-            <div style="card-event-infos__participants">
-              <div>
-                <% e.bookings.where(confirmation: true).each do|b| %>
-                  <% if b.user.photo.attached? %>
-                    <%= cl_image_tag b.user.photo.key, class: "card-event-user avatar"%>
-                  <% else %>
-                    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-event-user avatar"/>
-                  <% end %>
-                <%end%>
-              </div>
+            <p class="flag"><%= Event::FLAGS[e.language.to_sym] %> </p>
+          </div>
+          <div style="card-event-infos__participants">
+            <div>
+              <% e.bookings.where(confirmation: true).each do|b| %>
+                <% if b.user.photo.attached? %>
+                  <%= cl_image_tag b.user.photo.key, class: "card-event-user avatar"%>
+                <% else %>
+                  <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-event-user avatar"/>
+                <% end %>
+              <%end%>
             </div>
           </div>
         </div>
-      <% end %>
-      <% %>
-      <% @my_past_bookings.each do |e| %>
-        <div class="card-event">
-          <% if e.photos.attached? %>
-            <%= cl_image_tag e.photos.first.key%>
-          <% else %>
-            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg"/>
-          <% end %>
-          <div class="card-event-infos">
-            <div class="card-event-infos__avatar">
-              <% if e.user.photo.attached? %>
-                <%= cl_image_tag e.user.photo.key, class: "avatar"%>
-              <% else %>
-                <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="avatar"/>
-              <% end %>
-            </div>
-            <div class="card-event-infos__title_dash">
-              <div>
-                <h2><%= e.title.capitalize %></h2>
-                <p><%= e.date.strftime('%d %b %Y') %></p>
-              </div>
-              <p class="flag"><%= Event::FLAGS[e.language.to_sym] %> </p>
-            </div>
-            <div style="card-event-infos__participants">
-              <div>
-                <% e.bookings.where(confirmation: true).each do|b| %>
-                  <% if b.user.photo.attached? %>
-                    <%= cl_image_tag b.user.photo.key, class: "card-event-user avatar"%>
-                  <% else %>
-                    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-event-user avatar"/>
-                  <% end %>
-                <%end%>
-              </div>
-            </div>
+          <div class="card-share" data-bs-toggle="modal" data-bs-target="#modal-<%= e.id %>">
+          <i class="btn btn-primary">Share your experience </i>
+          <%= render 'dashboards/modalpastevent', event: e %>
           </div>
-          <%# <%= link_to edit_user_registration_path do %>
-          <%# <i class="btn btn-primary">Share your experience</i>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-
+      </div>
+    <% end %>
   </div>
 </div>
