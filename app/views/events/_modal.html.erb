@@ -23,22 +23,6 @@
             <div style="font-size: 30px;"><%= Event::FLAGS[event.language.to_sym] %></div>
           </div>
           <p><%=event.description%></p>
-
-          <div data-controller="insert-in-list" data-insert-in-list-position-value="beforeend">
-            <div data-insert-in-list-target="items">
-              <p><%= pluralize Booking.joins(:reviews).where(event: event).size, "review" %><p>
-                <% if Booking.joins(:reviews).where(event: event).empty? %>
-                  Be the first to leave a review for <%= event.title %>
-                <% else %>
-                  <% Booking.joins(:reviews).where(event: event).each do |review| %>
-                    <p><%= review.content %></p>
-                  <% end %>
-                <% end %>
-            </div>
-            <% if Booking.find_by(user: current_user, event: event) %>
-              <%= render 'reviews/form', booking: Booking.find_by(user: current_user, event: event), review: @review %>
-            <% end %>
-          </div>
         </div>
 
         <!-- MAPBOX OPEN -->
