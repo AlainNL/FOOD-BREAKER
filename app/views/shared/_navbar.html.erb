@@ -3,9 +3,14 @@
 
     <% if user_signed_in? %>
       <%= link_to destroy_user_session_path, data: {turbo_method: :delete} do %>
-      <i class="fa-solid fa-question navbar-lewagon-icon"></i>
+        <i class="fa-solid fa-comments" style="font-size: 26px;"></i>
       <% end %>
     <% end %>
+
+    <%= link_to dashboard_path do %>
+      <i class="fa-solid fa-circle-plus" style="font-size: 26px;"></i>
+    <% end %>
+
 
     <%= link_to events_path do %>
       <%= image_tag "Miroodles.png", class: "navbar-lewagon-logo"%>
