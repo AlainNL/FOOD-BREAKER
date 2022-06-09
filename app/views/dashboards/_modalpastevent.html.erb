@@ -24,13 +24,15 @@
           </div>
           <p><%=event.description%></p>
 
-          <div data-controller="insert-in-list" data-insert-in-list-position-value="beforeend">
-            <div data-insert-in-list-target="items">
-              <p><%= pluralize Booking.joins(:reviews).where(event: event).size, "review" %><p>
-                <% if Booking.joins(:reviews).where(event: event).empty? %>
-                  <%= event.title %>
-                <% else %>
-                  <% Booking.joins(:reviews).where(event: event).each do |review| %>
+            <div data-controller="insert-in-list" data-insert-in-list-position-value="beforeend">
+              <div data-insert-in-list-target="items">
+                <p><%= pluralize Booking.joins(:reviews).where(event: event).size, "review" %><p>
+                  <% if Booking.joins(:reviews).where(event: event).empty? %>
+                    <%= event.title %>
+                  <% else %>
+                    <% Review.joins(:booking).where(bookings: { event: event }).each do |review| %>
+                      <p><%= review.content %></p>
+                    <% end %>
                   <% end %>
                 <% end %>
             </div>
