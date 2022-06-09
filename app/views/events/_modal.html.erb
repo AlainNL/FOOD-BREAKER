@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade rounded-bottom" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade rounded-bottom" id="modal<%= event.id %>" tabindex="-1" aria-labelledby="modal<%= event.id %>Label" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
 
@@ -23,7 +23,6 @@
             <div style="font-size: 30px;"><%= Event::FLAGS[event.language.to_sym] %></div>
           </div>
           <p><%=event.description%></p>
-
 
           <div data-controller="insert-in-list" data-insert-in-list-position-value="beforeend">
             <div data-insert-in-list-target="items">
