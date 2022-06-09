@@ -5,7 +5,7 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = Event.order("events.date ASC")
+    @events = Event.where("date >= ?", Time.now).order("events.date ASC")
     @review = Review.new
 
     if params.dig(:filters, :address).present?
