@@ -20,7 +20,7 @@
           <div class="d-flex justify-content-center mt-4 w-100">
             <%= f.input :categories, as: :check_boxes, input_html: { class: "tag-selector" }, item_wrapper_class: 'tag-item', collection: ["Dinner", "Cooking Class", "Food Tour", "Brunch"], label: false, include_hidden: false, checked: params.dig(:filters, :categories) %>
           </div>
-          <%= f.submit "SEARCH +", class: "btn-primary" %>
+          <%= f.submit "SEARCH +", class: "btn-foodbreaker" %>
         <% end %>
     </div>
     <div class="card-event-little-all">
