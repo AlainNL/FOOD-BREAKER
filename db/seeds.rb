@@ -100,7 +100,7 @@ nicolasEvent.save!
 chatroom5 = Chatroom.new(event_id: nicolasEvent.id)
 chatroom5.save!
 
-nicolasEvent2 = Event.new(title: "Pizza Cooking Class", category: "Cooking Class", address: "66, rue de l'arbre sec 75001 Paris", description: "Learn how to make delicious pizza", date: "11/06/2022", language: "English", capacity: 4, user: nicolas)
+nicolasEvent2 = Event.new(title: "Pizza Cooking Class", category: "Cooking Class", address: "66, rue de l'arbre sec 75001 Paris", description: "Learn how to make delicious pizza. I will share with you techniques to prepare the doughs, the temperatures and the ingredients to be used to obtain an excellent pizza. Cook and enjoy a variety of pizzas from scratch like Margherita, Napoletana, and Marinara, as well as a dessert", date: "11/06/2022", language: "English", capacity: 4, user: nicolas)
 nicolasEvent2.photos.attach(io: URI.open("https://images.unsplash.com/photo-1587085416963-22efba033dd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8aXRhbGlhbiUyMHBpenphfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"), filename: "nicolasEvent.png", content_type: "image/png")
 nicolasEvent2.save!
 chatroom6 = Chatroom.new(event_id: nicolasEvent2.id)

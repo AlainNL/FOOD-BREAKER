@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import BarRatingController from "./bar_rating_controller.js"
+application.register("bar-rating", BarRatingController)
+
 import ChatroomSubscriptionController from "./chatroom_subscription_controller.js"
 application.register("chatroom-subscription", ChatroomSubscriptionController)
 
