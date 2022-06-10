@@ -1,10 +1,10 @@
 {
-  "background_color": "white",
-  "description": "Foodbreaker is the most powerfull social dinning app allowing expatriates and new comers to meet people around food events",
   "display": "fullscreen",
-  "name": "Foodbreaker",
- "icons": [
-   {
+  "orientation": "portrait",
+  "background_color": "white",
+  "description": "FOOD BREAKER",
+  "name": "Food breaker",
+  "icons": [
     <% files = Dir.entries(Rails.root.join("app/assets/images/icons/")).select {|f| !File.directory? f} %>
     <% files.each_with_index do |file, index| %>
       <% match = file.match(/.+-(?<size>\d{2,3}x\d{2,3}).png/) %>
@@ -14,6 +14,5 @@
         "type": "image/png"
       }<%= "," unless (files.size - 1) == index %>
     <% end %>
-   }
- ]
+  ]
 }
