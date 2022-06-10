@@ -29,7 +29,8 @@
             <%end%>
           </div>
 
-          <div data-controller="insert-in-list" data-insert-in-list-position-value="beforeend">
+          <div data-controller="insert-in-list"
+          data-insert-in-list-event-id-value="<%= event.id %>" data-insert-in-list-position-value="beforeend">
               <div data-insert-in-list-target="items">
                 <p><%= pluralize Booking.joins(:reviews).where(event: event).size, "review" %><p>
                   <% if Booking.joins(:reviews).where(event: event).empty? %>

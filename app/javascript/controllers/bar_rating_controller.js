@@ -4,8 +4,11 @@ import $ from 'jquery';
 
 // Connects to data-controller="bar-rating"
 export default class extends Controller {
+  static targets = ['input']
+
   connect() {
-    $('#review_rate').barrating({
+    console.log("hello");
+    $(this.inputTarget).barrating({
       theme: 'css-stars'
     });
   }
