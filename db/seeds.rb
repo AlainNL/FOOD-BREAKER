@@ -87,7 +87,7 @@ sarahEvent2.save!
 chatroom4bis = Chatroom.new(event_id: sarahEvent.id)
 chatroom4bis.save!
 
-sarahEvent3 = Event.new(title: "French pastries tour", category: "Food Tour", address: "rue du Bac 75007 Paris", description: "Tour to taste a sample of French pastries produced locally. The tour starts near the Bon Marche. You'll visit famous patisseries such as Pierre Herme or Philippe Conticini", date: "08/06/2022", language: "French", capacity: 4, rating: 2.8, user: sarah)
+sarahEvent3 = Event.new(title: "French pastries tour", category: "Food Tour", address: "rue du Bac 75007 Paris", description: "Tour to taste a sample of French pastries produced locally. The tour starts near the Bon Marche. You'll visit famous patisseries such as Pierre Herme or Philippe Conticini", date: "18/06/2022", language: "French", capacity: 4, rating: 2.8, user: sarah)
 sarahEvent3.photos.attach(io: URI.open("https://images.unsplash.com/photo-1609590981063-d495e2914ce4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGFzdHJpZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"), filename: "sarahEvent3.png", content_type: "image/png")
 sarahEvent3.save!
 chatroom3 = Chatroom.new(event_id: sarahEvent3.id)

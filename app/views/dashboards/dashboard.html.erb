@@ -15,13 +15,13 @@
             <i class="fa-solid fa-pen-to-square pin-form"></i>
           <% end %>
 
-        <% for i in (1..5) do %>
-          <% if i > @myevents.average(:rating) %>
+          <% for i in (1..5) do %>
+            <% if i > @myevents.average(:rating) %>
               <i class="fa-solid fa-star" style= "color: grey"></i>
-          <% else %>
-            <i class="fa-solid fa-star" style= "color: #EDB867"></i>
+            <% else %>
+              <i class="fa-solid fa-star" style= "color: #EDB867"></i>
+            <% end %>
           <% end %>
-        <% end %>
         </div>
       </div>
     </div>
@@ -158,6 +158,8 @@
         </div>
         <%= render 'dashboards/modalpastevent', event: e %>
       <% end %>
+
+
       <% @my_past_bookings.each do |e| %>
         <div class="card-event" style="height: 320px;">
           <% if e.photos.attached? %>
@@ -193,7 +195,7 @@
             </div>
           </div>
           <div class="btn-foodbreaker-container">
-            <button class="card-share btn-foodbreaker" data-bs-toggle="modal"   data-bs-target="#modal-<%= e.id %>"> LEAVE A REVIEW +</button>
+            <button class="card-share btn-foodbreaker" data-bs-toggle="modal" data-bs-target="#modal-<%= e.id %>"> LEAVE A REVIEW +</button>
           </div>
           <%= render 'dashboards/modalpastevent', event: e %>
         </div>

@@ -25,7 +25,7 @@
 
           <div class="reviews">
             <% event.reviews.each do |r| %>
-            <%= render "events/review", review: r %>
+              <%= render "events/review", review: r %>
             <%end%>
           </div>
 
@@ -33,11 +33,11 @@
           data-insert-in-list-event-id-value="<%= event.id %>" data-insert-in-list-position-value="beforeend">
               <div data-insert-in-list-target="items">
                 <p><%= pluralize Booking.joins(:reviews).where(event: event).size, "review" %><p>
-                  <% if Booking.joins(:reviews).where(event: event).empty? %>
-                  <% else %>
-                    <% Booking.joins(:reviews).where(event: event).each do |review| %>
-                    <% end %>
+                <% if Booking.joins(:reviews).where(event: event).empty? %>
+                <% else %>
+                  <% Booking.joins(:reviews).where(event: event).each do |review| %>
                   <% end %>
+                <% end %>
               </div>
               <% if Booking.find_by(user: current_user, event: event) %>
                 <%= render 'reviews/form', booking: Booking.find_by(user: current_user, event: event), review: Review.new %>

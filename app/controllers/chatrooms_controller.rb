@@ -16,7 +16,7 @@ class ChatroomsController < ApplicationController
   #   end
   # end
 
-private
+  private
 
   def chatroom_params
     params.require(:event).permit(:name, :event_id)
