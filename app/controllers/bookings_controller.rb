@@ -4,9 +4,9 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     ####
-    ####if @event.bookings.count >= @event.capacity
-      #ne peut pas créer de booking
-    ####end
+    # ###if @event.bookings.count >= @event.capacity
+    # ne peut pas créer de booking
+    # ###end
     ####
 
     @booking.event = @event
@@ -28,5 +28,4 @@ class BookingsController < ApplicationController
   def booking_params
     params.require(:booking).permit(:nb_guest, :user_id, :event_id)
   end
-
 end

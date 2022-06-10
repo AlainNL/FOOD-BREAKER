@@ -6,7 +6,7 @@ class Event < ApplicationRecord
     Portuguese: "🇵🇹"
   }
   LANGUAGES = ["French", "English", "Spanish", "Portuguese"]
-  CATEGORIES = ["Dinner","Cooking Class", "Food Tour", "Brunch"]
+  CATEGORIES = ["Dinner", "Cooking Class", "Food Tour", "Brunch"]
 
   belongs_to :user
   has_many :bookings
@@ -19,7 +19,6 @@ class Event < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_address?
 
   validates :title, :category, :address, :description, :date, :language, :capacity, presence: true
-  validates :category, inclusion: { in: CATEGORIES  }
+  validates :category, inclusion: { in: CATEGORIES }
   validates :language, inclusion: { in: LANGUAGES }
-
 end

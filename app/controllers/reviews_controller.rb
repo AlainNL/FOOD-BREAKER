@@ -17,7 +17,7 @@ class ReviewsController < ApplicationController
     @event.rating = Booking.joins(:reviews).where(event: @event).average(:rate)
   end
 
-private
+  private
 
   def review_params
     params.require(:review).permit(:content, :rate)
