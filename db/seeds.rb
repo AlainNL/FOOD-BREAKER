@@ -31,7 +31,7 @@ sleep(1)
 
 puts "User seed start..."
 
-pierre = User.new(email: 'pierre@gmail.com', password: '12345678', first_name: "pierre", last_name: "jean", avatar: '', address: "17 boulevard clemenceau 35000 Rennes", bio: "Living in Britanny, I will be delighted to welcome you in my restored farmhouse from the 18th century with a lovely garden.")
+pierre = User.new(email: 'pierre@gmail.com', password: '12345678', first_name: "Pierre", last_name: "John", avatar: '', address: "17 boulevard clemenceau 35000 Rennes", bio: "Living in Britanny, I will be delighted to welcome you in my restored farmhouse from the 18th century with a lovely garden.")
 pierre.photo.attach(io: URI.open("https://images.unsplash.com/photo-1548372290-8d01b6c8e78c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Njl8fG1hbiUyMGZhY2V8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"), filename: "pierre.png", content_type: "image/png")
 pierre.save!
 

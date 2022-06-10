@@ -1,2 +1,12 @@
-<p><%= review.content %></p>
-<p><%= review.rate %></p>
+<div class="my-3">
+  <div><%= review.booking.user.first_name %>: <%= review.content %></div>
+  <% if review.rate.present? %>
+    <% for i in (1..5) do %>
+      <% if i > review.rate %>
+        <i class="fa-solid fa-star" style= "color: grey"></i>
+      <% else %>
+        <i class="fa-solid fa-star" style= "color: #EDB867"></i>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
